@@ -5,7 +5,8 @@ require_once("dll/functions.php");
 $con=conectar();
 extract ($_GET);
 if (isset($del)){
-	Delete_Recup($con,"tareas","num","isdeleted",$id,1);
+	Delete_Recup($con,"tareas","num","isdeleted",$id,$del);
+	header("Location:todo.php");
 }
 // si existe por get el id de algo es que se quiere editar
 //mostramos un formulario mini para editar.
