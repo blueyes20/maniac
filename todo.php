@@ -2,7 +2,11 @@
 require_once("dll/config.php");
 require_once("dll/inyection_sql.php");
 require_once("dll/functions.php");
-
+$con=conectar();
+extract ($_GET);
+if (isset($del)){
+	Delete_Recup($con,"tareas","num","isdeleted",$id,1);
+}
 // si existe por get el id de algo es que se quiere editar
 //mostramos un formulario mini para editar.
 
@@ -50,7 +54,7 @@ require_once("dll/functions.php");
       <?php
 	  $con=conectar();
 //	  $query="SELECT *,date_format(fecha, '%d/%m/%Y') AS Fecha FROM tareas WHERE prioridad='CRITICO'";
-	  $qr="SELECT *,date_format(fecha, '%d/%m/%Y') AS Fecha FROM tareas LEFT JOIN clientes ON tareas.cliente = clientes.id_clientes WHERE prioridad = 'CRITICO'";
+	  $qr="SELECT *,date_format(fecha, '%d/%m/%Y') AS Fecha FROM tareas LEFT JOIN clientes ON tareas.cliente = clientes.id_clientes WHERE prioridad = 'CRITICO' AND isdeleted='0'";
 	  		
 		$result=consulta_sql($con,$qr);
 	$i=0;
@@ -61,7 +65,7 @@ require_once("dll/functions.php");
 		  echo "<td width='10%' class='fila_". $i%2 ."'>".utf8_encode ($info['categoria'])."</td>";
 		  echo "<td width='35%' class='fila_". $i%2 ."'>".utf8_encode ($info['tarea'])."</td>";
 		  echo "<td width='10%' class='fila_". $i%2 ."'>".utf8_encode ($info['importe'])."</td>";
-		  echo "<td width='7%' class='fila_". $i%2 ."'><a href='editar-borrar.php?id=".$info['num']."'><img src='images/edit.png' width='16' height='16'/></a> | <a href='editar-borrar.php?id=".$info['num']."&del=1'><img src='images/delete.png' width='16' height='16' /></a></td></tr>";
+		  echo "<td width='7%' class='fila_". $i%2 ."'><a href='editar-borrar.php?id=".$info['num']."'><img src='images/edit.png' width='16' height='16'/></a> | <a href='todo.php?id=".$info['num']."&del=1'><img src='images/delete.png' width='16' height='16' /></a></td></tr>";
 		 $i++;
 		  }
 	  

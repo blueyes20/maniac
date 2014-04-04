@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
+-- version 3.5.2
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 01-04-2014 a las 10:45:58
--- Versión del servidor: 5.5.27
--- Versión de PHP: 5.4.7
+-- Servidor: localhost
+-- Tiempo de generación: 04-04-2014 a las 09:56:08
+-- Versión del servidor: 5.5.25a
+-- Versión de PHP: 5.4.4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -38,13 +38,13 @@ CREATE TABLE IF NOT EXISTS `categorias` (
 
 INSERT INTO `categorias` (`id_categoria`, `categoria`) VALUES
 (1, 'IMPRENTA'),
-(2, 'DISEÑO WEB'),
+(2, 'DISEÃ‘O WEB'),
 (3, 'POSICIONAMIENTO WEB'),
 (4, 'MANTENIMIENTO WEB'),
 (5, 'WEB HOTEL'),
 (6, 'WEB INMOBILIARIA'),
 (7, 'CAPTAR CLIENTES'),
-(8, 'GESTIÓNES CASHUBA');
+(8, 'GESTIÃ“NES CASHUBA');
 
 -- --------------------------------------------------------
 
@@ -90,10 +90,10 @@ CREATE TABLE IF NOT EXISTS `tareas` (
 --
 
 INSERT INTO `tareas` (`num`, `fecha`, `cliente`, `categoria`, `prioridad`, `tarea`, `importe`, `isdeleted`) VALUES
-(1, '2013-12-27 22:05:41', 1, 0, 'CRITICO', 'DISEÑO CARTEL SON DEL ARTE', 135, 0),
-(2, '2013-12-27 22:05:41', 2, 0, 'CRITICO', 'DISEÑO TARJETONES PARA BOTELLAS', 195, 0),
-(3, '2013-12-27 22:05:41', 1, 0, 'CRITICO', 'DISEÑO BOTELLAS', 195, 0),
-(4, '2013-12-27 22:05:41', 1, 0, 'CRITICO', 'DISEÑO LOGO INTEGRAL', 195, 0),
+(1, '2013-12-27 22:05:41', 1, 1, 'CRITICO', 'DISEÃ‘O CARTEL SON DEL ARTE', 135, 1),
+(2, '2013-12-27 22:05:41', 2, 0, 'CRITICO', 'DISEÃ‘O TARJETONES PARA BOTELLAS', 195, 1),
+(3, '2013-12-27 22:05:41', 1, 0, 'CRITICO', 'DISEÃ‘O BOTELLAS', 195, 1),
+(4, '2013-12-27 22:05:41', 1, 0, 'CRITICO', 'DISEÃ‘O LOGO INTEGRAL', 195, 1),
 (5, '2013-12-27 22:05:41', 1, 0, 'CRITICO', 'WEB CORPORATIVA', 195, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

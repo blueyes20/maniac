@@ -6,7 +6,7 @@
 ===ESTAS SOLO SE PONEN UNA VEZ EN TOOOOODO EL PROYECTO====
 ==========================================================*/
 
-//require_once ('config.php');
+require_once ('config.php');
 
 
 /*
@@ -261,4 +261,115 @@ function nombre_sorteo($id_sorteo){
 function rellenar_numeros($num,$ceros_a_poner) {
 return str_pad((int) $num,$ceros_a_poner,"0",STR_PAD_LEFT);
 }
+
+
+/*
+==================================================================================================
+FUNCIÓN QUE GENERA UN SELECT DE CUALQUIER TABLA PASANDO LAS VARIABLES ID y ETIQUETA QUE QUERAMOS
+==================================================================================================
+*/
+
+
+function SelectNormal($conex,$tabla,$id_tabla,$etiqueta){
+	$conex= conectar();
+	$consulta="SELECT * FROM $tabla";
+	$info=mysqli_query($conex,$consulta);
+	echo "<select name='$etiqueta'>";
+	echo "<option value='0'>Elige</option>";
+	while($info2=mysqli_fetch_array($info)){
+		echo'<option value="'.$info2["$id_tabla"].'"';
+		echo '>'.$info2["$etiqueta"].'</option>';
+		}
+  		echo '</select>';  
+}
+
+
+//$conecto=conectar();
+//generaSelectNormal($conecto,"categorias","id_categoria","categoria"); 
+
+/*
+==================================================================================================
+FUNCIÓN QUE GENERA UN SELECT CON TODOS LOS DATOS Y SELECCIONA EL QUE ES ENVIADO.
+==================================================================================================
+*/
+
+function SelectAvanzSelecc($conex,$tabla,$id_Tabla,$etiqueta,$tabla2,$id_tabla2,$etiqueta2,$id){
+	$conex= conectar();
+	$consulta="SELECT * FROM $tabla WHERE $id_Tabla=".$id;
+	$i=mysqli_query($conex,$consulta);
+	$in=mysqli_fetch_array($i);
+	//$inn=$in["$etiqueta"];
+	
+	$consulta2="SELECT * FROM $tabla2";
+	$i2=mysqli_query($conex,$consulta2);
+	
+	echo '<select name="$etiqueta" id="$etiqueta">'; 	
+	while($in2=mysqli_fetch_array($i2)){
+		echo'<option value="'.$in2["$id_tabla2"].'"';
+					
+					if($in["$etiqueta"]==$in2["$id_tabla2"])
+						echo 'selected="selected"';
+					
+					echo '>'.$in2["$etiqueta2"].'</option>';
+					}
+  			   echo '</select>';  
+	
+}
+
+//$conecto=conectar();
+//generaSelectAvanzadoSeleccionado($conecto,"tareas","num","cliente","clientes","id_clientes","nombre","1");
+/*
+==================================================================================================
+FUNCIÓN QUE GENERA UN SELECT CON TODOS LOS DATOS Y SELECCIONA EL QUE ES ENVIADO.
+==================================================================================================
+*/
+
+function SelectAvanzado($conex,$tabla,$id_Tabla,$etiqueta,$tabla2,$id_tabla2,$etiqueta2){
+	$conex= conectar();
+	$consulta="SELECT * FROM $tabla";
+	$i=mysqli_query($conex,$consulta);
+	$in=mysqli_fetch_array($i);
+	//$inn=$in["$etiqueta"];
+	
+	$consulta2="SELECT * FROM $tabla2";
+	$i2=mysqli_query($conex,$consulta2);
+	
+	echo '<select name="$etiqueta" id="$etiqueta">'; 	
+	
+	while($in2=mysqli_fetch_array($i2)){
+		echo'<option value="'.$in2["$id_tabla2"].'">'.$in2["$etiqueta2"].'</option>';
+	}
+	echo '</select>';  
+}
+
+//$conecto=conectar();
+//generaSelectAvanzado($conecto,"tareas","num","cliente","clientes","id_clientes","nombre","1");
+		   
+/*
+==================================================================================================
+FUNCIÓN BORRAR RECUPERAR
+==================================================================================================
+*/
+function Delete_Recup($conex,$tabla,$id_tabla,$etiqueta,$id,$del){
+	$conex= conectar();
+	if($del==1){
+		$actualiza="UPDATE $tabla SET $etiqueta=$del WHERE $id_tabla=".$id;
+		$envio=mysqli_query($conex,$actualiza);
+	}else{
+		$actualiza2="UPDATE $tabla SET $etiqueta=$del WHERE $id_tabla=".$id;
+		$envio2=mysqli_query($conex,$actualiza2);
+	}
+}
+
+
+function Delete_Recup2($conex,$tabla,$id_tabla,$etiqueta,$id,$del){
+	$conex= conectar();
+	if(isset($del)){
+		$actualiza="UPDATE $tabla SET $etiqueta=$del WHERE $id_tabla=".$id;
+		$envio=mysqli_query($conex,$actualiza);
+	}
+}
+
+
 ?>
+
