@@ -370,6 +370,8 @@ function Delete_Recup2($conex,$tabla,$id_tabla,$etiqueta,$id,$del){
 	}
 }
 
+//Prueba.
+
 
 ?>
 
