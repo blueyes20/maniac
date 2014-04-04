@@ -395,7 +395,7 @@ function ListarClientes($conex,$istareas,$estado){
 
 //$conecto=conectar();
 //generaSelectAvanzado($conecto,"tareas","num","cliente","clientes","id_clientes","nombre","1");
-<<<<<<< HEAD
+
 //PRUEBA//PRUEBA//PRUEBA
 //PRUEBA//PRUEBA//PRUEBA
 //PRUEBA//PRUEBA//PRUEBA
@@ -405,7 +405,7 @@ function ListarClientes($conex,$istareas,$estado){
 //PRUEBA//PRUEBA//PRUEBA
 //PRUEBA//PRUEBA//PRUEBA
 //PRUEBA//PRUEBA//PRUEBA
-=======
+
 /*
 ==================================================================================================
 PRUEBA
@@ -432,7 +432,5 @@ function ListarClientes($conex,$istareas,$estado){
 
 //$conecto=conectar();
 //generaSelectAvanzado($conecto,"tareas","num","cliente","clientes","id_clientes","nombre","1");
-
->>>>>>> ea285d6d6583b214b78e56bbb866c19cb154c741
 ?>
 
