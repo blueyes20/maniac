@@ -369,7 +369,32 @@ function Delete_Recup2($conex,$tabla,$id_tabla,$etiqueta,$id,$del){
 		$envio=mysqli_query($conex,$actualiza);
 	}
 }
+/*
+==================================================================================================
+FUNCIÓN QUE LISTA LOS CLIENTES SEGUN SU PRIORIDAD
+==================================================================================================
+*/
 
+function ListarClientes($conex,$istareas,$estado){
+	$conex= conectar();
+	$consulta="SELECT * FROM tareas";
+	$i=mysqli_query($conex,$consulta);
+	$in=mysqli_fetch_array($i);
+	//$inn=$in["$etiqueta"];
+	
+	$consulta2="SELECT * FROM $tabla2";
+	$i2=mysqli_query($conex,$consulta2);
+	
+	echo '<select name="$etiqueta" id="$etiqueta">'; 	
+	
+	while($in2=mysqli_fetch_array($i2)){
+		echo'<option value="'.$in2["$id_tabla2"].'">'.$in2["$etiqueta2"].'</option>';
+	}
+	echo '</select>';  
+}
+
+//$conecto=conectar();
+//generaSelectAvanzado($conecto,"tareas","num","cliente","clientes","id_clientes","nombre","1");
 
 ?>
 
