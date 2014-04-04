@@ -395,6 +395,7 @@ function ListarClientes($conex,$istareas,$estado){
 
 //$conecto=conectar();
 //generaSelectAvanzado($conecto,"tareas","num","cliente","clientes","id_clientes","nombre","1");
+<<<<<<< HEAD
 //PRUEBA//PRUEBA//PRUEBA
 //PRUEBA//PRUEBA//PRUEBA
 //PRUEBA//PRUEBA//PRUEBA
@@ -404,5 +405,34 @@ function ListarClientes($conex,$istareas,$estado){
 //PRUEBA//PRUEBA//PRUEBA
 //PRUEBA//PRUEBA//PRUEBA
 //PRUEBA//PRUEBA//PRUEBA
+=======
+/*
+==================================================================================================
+PRUEBA
+==================================================================================================
+*/
+
+function ListarClientes($conex,$istareas,$estado){
+	$conex= conectar();
+	$consulta="SELECT * FROM tareas";
+	$i=mysqli_query($conex,$consulta);
+	$in=mysqli_fetch_array($i);
+	//$inn=$in["$etiqueta"];
+	
+	$consulta2="SELECT * FROM $tabla2";
+	$i2=mysqli_query($conex,$consulta2);
+	
+	echo '<select name="$etiqueta" id="$etiqueta">'; 	
+	
+	while($in2=mysqli_fetch_array($i2)){
+		echo'<option value="'.$in2["$id_tabla2"].'">'.$in2["$etiqueta2"].'</option>';
+	}
+	echo '</select>';  
+}
+
+//$conecto=conectar();
+//generaSelectAvanzado($conecto,"tareas","num","cliente","clientes","id_clientes","nombre","1");
+
+>>>>>>> ea285d6d6583b214b78e56bbb866c19cb154c741
 ?>
 
