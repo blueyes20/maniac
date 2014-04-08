@@ -1,5 +1,6 @@
 <?php
 echo "hola";
+echo "hola";
 /*
 ==========================================================
 =========OBTENEMOS LAS VARIABLES DE CONEXIÓN==============
