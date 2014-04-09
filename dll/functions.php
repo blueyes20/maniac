@@ -1,6 +1,4 @@
 <?php
-echo "hola";
-echo "hola";
 /*
 ==========================================================
 =========OBTENEMOS LAS VARIABLES DE CONEXIÓN==============
@@ -372,7 +370,7 @@ function Delete_Recup2($conex,$tabla,$id_tabla,$etiqueta,$id,$del){
 }
 /*
 ==================================================================================================
-FUNCIÓN QUE LISTA LOS CLIENTES SEGUN SU PRIORIDAD
+---- NO ESTÁ TERMINADO ---- (FUNCIÓN QUE LISTA LOS CLIENTES SEGUN SU PRIORIDAD)
 ==================================================================================================
 */
 
@@ -396,5 +394,43 @@ function ListarClientes($conex,$istareas,$estado){
 
 //$conecto=conectar();
 //generaSelectAvanzado($conecto,"tareas","num","cliente","clientes","id_clientes","nombre","1");
+/*
+==================================================================================================
+--- NO ESTÁ TERMINADO --- (FUNCIÓN QUE LISTA LAS TAREAS)
+==================================================================================================
+*/
+
+function ListarTareas($conex,$isdeleted,$estado){
+	$conex= conectar();
+	$consulta="SELECT * FROM tareas";
+	$i=mysqli_query($conex,$consulta);
+	$in=mysqli_fetch_array($i);
+	
+	$consulta2="SELECT * FROM prioridades";
+	$i2=mysqli_query($conex,$consulta2);
+	
+	echo '<select name="PRIORIDAD" id="id_prioridad">'; 	
+	
+	while($in2=mysqli_fetch_array($i2)){
+		echo'<option value="'.$in2["prioridad"].'">'.$in2["prioridad"].'</option>';
+	}
+	echo '</select>';
+	
+	echo '<select name="$etiqueta" id="$etiqueta">';
+		while($in2=mysqli_fetch_array($i2)){
+		echo'<option value="'.$in2["$id_tabla2"].'">'.$in2["$etiqueta2"].'</option>';
+	}
+	echo '</select>';  
+	
+		echo '<select name="$etiqueta" id="$etiqueta">';
+		while($in2=mysqli_fetch_array($i2)){
+		echo'<option value="'.$in2["$id_tabla2"].'">'.$in2["$etiqueta2"].'</option>';
+	}
+	echo '</select>'; 
+  
+}
+
+//$conecto=conectar();
+//ListarTareas($conecto,"","","","","","","");
 ?>
 
