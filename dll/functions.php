@@ -360,6 +360,7 @@ function Delete_Recup($conex,$tabla,$id_tabla,$etiqueta,$id,$del){
 	}
 }
 
+/*Se está usando ésta*/
 
 function Delete_Recup2($conex,$tabla,$id_tabla,$etiqueta,$id,$del){
 	$conex= conectar();
