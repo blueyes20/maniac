@@ -431,6 +431,24 @@ function ListarTareas($conex,$isdeleted,$estado){
   
 }
 
+function listatareas2(){
+	  $con=conectar();
+//	  $query="SELECT *,date_format(fecha, '%d/%m/%Y') AS Fecha FROM tareas WHERE prioridad='CRITICO'";
+	  $qr="SELECT *,date_format(fecha, '%d/%m/%Y') AS Fecha FROM tareas LEFT JOIN clientes ON tareas.cliente = clientes.id_clientes WHERE prioridad = 'CRITICO' AND isdeleted='0'";
+	  		
+		$result=consulta_sql($con,$qr);
+	$i=0;
+		while($info=mysqli_fetch_array($result)){
+		  echo "<td width='3%' class='fila_". $i%2 ."'>".utf8_encode ($info['num'])."</td>";
+		  echo "<td width='10%' class='fila_". $i%2 ."'>".$info['Fecha']."</td>";
+		  echo "<td width='15%' class='fila_". $i%2 ."'>".utf8_encode ($info['nombre'])."</td>";
+		  echo "<td width='10%' class='fila_". $i%2 ."'>".utf8_encode ($info['categoria'])."</td>";
+		  echo "<td width='35%' class='fila_". $i%2 ."'>".utf8_encode ($info['tarea'])."</td>";
+		  echo "<td width='10%' class='fila_". $i%2 ."'>".utf8_encode ($info['importe'])."</td>";
+		  echo "<td width='7%' class='fila_". $i%2 ."'><a href='editar-borrar.php?id=".$info['num']."'><img src='images/edit.png' width='16' height='16'/></a> | <a href='todo.php?id=".$info['num']."&del=1'><img src='images/delete.png' width='16' height='16' /></a></td></tr>";
+		 $i++;
+		  }
+}
 //$conecto=conectar();
 //ListarTareas($conecto,"","","","","","","");
 ?>
