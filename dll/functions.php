@@ -430,24 +430,58 @@ function ListarTareas($conex,$isdeleted,$estado){
 	echo '</select>'; 
   
 }
+/*
+==================================================================================================
+FUNCIÓN QUE LISTA LAS TAREAS SEGUN PRIORIDAD ---HECHO---
+==================================================================================================
+*/
+function listatareas2($con,$prio){
+	echo'<h1>TAREAS DE PRIORIDAD'.$prio.'</h1>';
 
-function listatareas2(){
+
+
+echo'<table width="100%" border="0" class="display datatable">
+
+    <thead>
+
+     <tr>
+
+        <th width="5%" align="center">Nº</th>
+
+        <th width="10%" align="center">FECHA</th>
+
+        <th width="15%" align="center">CLIENTE</th>
+
+        <th width="10%" align="center">SECCIÓN</th>
+
+        <th width="45%" align="left">TAREA</th>
+
+        <th width="10%" align="center">€</th>
+
+        <th width="5%" align="center">MÁS</th>
+
+      </tr>
+
+    </thead>
+
+    <tbody>';
 	  $con=conectar();
 //	  $query="SELECT *,date_format(fecha, '%d/%m/%Y') AS Fecha FROM tareas WHERE prioridad='CRITICO'";
-	  $qr="SELECT *,date_format(fecha, '%d/%m/%Y') AS Fecha FROM tareas LEFT JOIN clientes ON tareas.cliente = clientes.id_clientes WHERE prioridad = 'CRITICO' AND isdeleted='0'";
+	  $qr="SELECT * FROM tareas,clientes,prioridades,categorias WHERE tareas.cliente = clientes.id_clientes AND tareas.prioridad=prioridades.id_prioridad AND tareas.categoria=categorias.id_categoria AND prioridad =".$prio." AND isdeleted='0'";
 	  		
 		$result=consulta_sql($con,$qr);
 	$i=0;
 		while($info=mysqli_fetch_array($result)){
 		  echo "<td width='3%' class='fila_". $i%2 ."'>".utf8_encode ($info['num'])."</td>";
-		  echo "<td width='10%' class='fila_". $i%2 ."'>".$info['Fecha']."</td>";
-		  echo "<td width='15%' class='fila_". $i%2 ."'>".utf8_encode ($info['nombre'])."</td>";
+		  echo "<td width='10%' class='fila_". $i%2 ."'>".$info['fecha']."</td>";
+		  echo "<td width='15%' class='fila_". $i%2 ."'>".utf8_encode ($info['nombre_cliente'])."</td>";
 		  echo "<td width='10%' class='fila_". $i%2 ."'>".utf8_encode ($info['categoria'])."</td>";
 		  echo "<td width='35%' class='fila_". $i%2 ."'>".utf8_encode ($info['tarea'])."</td>";
 		  echo "<td width='10%' class='fila_". $i%2 ."'>".utf8_encode ($info['importe'])."</td>";
 		  echo "<td width='7%' class='fila_". $i%2 ."'><a href='editar-borrar.php?id=".$info['num']."'><img src='images/edit.png' width='16' height='16'/></a> | <a href='todo.php?id=".$info['num']."&del=1'><img src='images/delete.png' width='16' height='16' /></a></td></tr>";
 		 $i++;
 		  }
+		  echo'</tbody>';
 }
 //$conecto=conectar();
 //ListarTareas($conecto,"","","","","","","");
