@@ -69,7 +69,7 @@ if (isset($del)){
       <?php
 	  $con=conectar();
 //	  $query="SELECT *,date_format(fecha, '%d/%m/%Y') AS Fecha FROM tareas WHERE prioridad='CRITICO'";
-	  $qr="SELECT *,date_format(fecha, '%d/%m/%Y') AS Fecha FROM tareas LEFT JOIN clientes ON tareas.cliente = clientes.id_clientes WHERE prioridad = 'CRITICO' AND isdeleted='0'";
+	  $qr="SELECT *,date_format(fecha, '%d/%m/%Y') AS Fecha FROM tareas LEFT JOIN clientes ON tareas.cliente = clientes.id_clientes WHERE isdeleted='0'";
 	  		
 		$result=consulta_sql($con,$qr);
 	$i=0;
