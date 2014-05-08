@@ -1,23 +1,7 @@
 <?php
 ob_start();
-session_start();
-require ('dll/config.php');
-$_SESSION['mensaje_error']="";
-extract($_POST);
-if (@$clave==$main_clave){
-	$_SESSION["autentificado"]=="81a67";
-	header ('Location:todo.php');
-	}
-	
-if (@$clave !=4){
-	$_SESSION['mensaje_error']= "Compruebe los datos";
-	}	
-	
-if (@$clave == ""){
-	$_SESSION['mensaje_error']= "Introduzca su Clave";
-	}	
-	
-	
+//session_start();
+require ('dll/config.php');	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -30,33 +14,78 @@ if (@$clave == ""){
 <meta name="language" content="es" /> 
 <meta name="author" content="CASHUBA.COM - LISTA DE TAREAS"/> 
 <meta name="copyright" content="CASHUBA.COM - LISTA DE TAREAS" />
-<link href="css/todo_list.css" rel="stylesheet" type="text/css" media="screen" />
 
+<link rel="stylesheet" href="css/style.default.css" type="text/css" />
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+<script src="js/html5shiv.js"></script>
+<script src="js/respond.min.js"></script>
+<![endif]-->
+
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/jquery-migrate-1.2.1.min.js"></script>
+<script src="js/jquery-ui-1.10.3.min.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+
+<script src="js/modernizr.min.js"></script>
+<script src="js/jquery.cookies.js"></script>
+
+<script src="js/custom.js"></script>
+
+<script>
+    jQuery(document).ready(function(){
+        jQuery('#login').submit(function(){
+            var u = jQuery('#username').val();
+            var p = jQuery('#password').val();
+            if(u == '' || p == '') {
+                jQuery('.login-alert').fadeIn();
+                return false;
+            }
+        });
+    });
+</script>
 
 </head>
-<body>
 
-<form id="form1" name="form1" method="post" action="#">
-<input type="hidden" name="c" id="c" value="1">
-<div id="wrapper_login"><br /><br /><br /><div id="login_master"><table width="450" border="0" align="center" cellpadding="3" cellspacing="5" id="login">
-  <tr>
-    <td colspan="2" align="center" bgcolor="#FFFFFF"><span style="color:#000">Introduce las Clave para Gestionar tu Lista de Tareas</span></td>
-    </tr>
-  <tr>
-    <td width="206" bgcolor="#FFFFFF"><div align="right">Introduce tu Password&nbsp;&nbsp;&nbsp;</div></td>
-    <td width="196" align="left" bgcolor="#FFFFFF"><input name="clave" class="input230" type="password" id="clave" value=""/></td>
-  </tr>
-  <tr>
-    <td colspan="2" bgcolor="#657"><div align="center"  style="color:#fff;"><?php echo $_SESSION["mensaje_error"]; session_destroy();?></div></td>
-  </tr>
-  <tr>
-    <td colspan="2" bgcolor="#657"><div align="center">
-      
-      <input type="submit" class="btnGenerico" name="Submit" id="button" value=" Acceder al panel de Administración " />
-      </div></td>
-  </tr>
-  </table></div>
+<body class="loginpage">
+
+<div class="loginpanel">
+    <div class="loginpanelinner">
+        
+        <div id="fondologin">
+        <div class="logo animate0 bounceIn"><img src="images/logo.png" alt="" /></div>
+        
+        
+        <form id="login" action="usuarios/comprobar.php" method="post">
+            
+            <div class="inputwrapper login-alert">
+                <div class="alert alert-error">Contraseña o nombre de usuario incorrectos</div>
+            </div>
+            <div class="inputwrapper animate1 bounceIn">
+                <input type="text" name="username" id="username" placeholder="Introduce tu nombre de usuario" />
+            </div>
+            <div class="inputwrapper animate2 bounceIn">
+                <input type="password" name="password" id="password" placeholder="Introduce tu contraseña" />
+            </div>
+            <div class="inputwrapper animate3 bounceIn">
+                <button name="submit">Acceder</button>
+            </div>
+            <div class="inputwrapper animate4 bounceIn">
+                <!--<div class="pull-right">¿No eres usuario?<a href="registration.html"> Regístrate</a></div>-->
+                <label><input type="checkbox" class="remember" name="signin" />No cerrar sesión</label>
+            </div>
+            
+        </form>
+        </div><!--fincapalogin-->
+    
+    </div><!--loginpanelinner-->
+</div><!--loginpanel-->
+
+<div class="loginfooter">
+    <p>&copy; 2014 MANIAC. Todos los derechos reservados</p>
 </div>
-</form>
+
 </body>
 </html>

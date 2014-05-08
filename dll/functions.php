@@ -302,7 +302,7 @@ function SelectAvanzSelecc($conex,$tabla,$id_Tabla,$etiqueta,$tabla2,$id_tabla2,
 	$consulta2="SELECT * FROM $tabla2";
 	$i2=mysqli_query($conex,$consulta2);
 	
-	echo '<select name="$etiqueta" id="$etiqueta">'; 	
+	echo '<select class="element select medium" name="'.$etiqueta.'" id="'.$etiqueta.'">'; 	
 	while($in2=mysqli_fetch_array($i2)){
 		echo'<option value="'.$in2["$id_tabla2"].'"';
 					
@@ -324,6 +324,34 @@ FUNCIÓN QUE GENERA UN SELECT CON TODOS LOS DATOS Y SELECCIONA EL QUE ES ENVIADO.
 */
 
 function SelectAvanzado($conex,$tabla,$id_Tabla,$etiqueta,$tabla2,$id_tabla2,$etiqueta2){
+	$conex= conectar();
+	$consulta="SELECT * FROM $tabla";
+	$i=mysqli_query($conex,$consulta);
+	$in=mysqli_fetch_array($i);
+	//$inn=$in["$etiqueta"];
+	
+	$consulta2="SELECT * FROM $tabla2";
+	$i2=mysqli_query($conex,$consulta2);
+	
+	echo '<select name="$etiqueta" id="$etiqueta">'; 	
+	
+	while($in2=mysqli_fetch_array($i2)){
+		echo'<option value="'.$in2["$id_tabla2"].'">'.$in2["$etiqueta2"].'</option>';
+	}
+	echo '</select>';  
+}
+
+//$conecto=conectar();
+//generaSelectAvanzado($conecto,"tareas","num","cliente","clientes","id_clientes","nombre","1");
+		   
+/*
+
+==================================================================================================
+FUNCIÓN QUE GENERA UN SELECT CON TODOS LOS DATOS.
+==================================================================================================
+*/
+
+function Listar($conex,$tabla,$id_Tabla,$etiqueta,$tabla2,$id_tabla2,$etiqueta2){
 	$conex= conectar();
 	$consulta="SELECT * FROM $tabla";
 	$i=mysqli_query($conex,$consulta);
@@ -397,6 +425,54 @@ function ListarClientes($conex,$istareas,$estado){
 //generaSelectAvanzado($conecto,"tareas","num","cliente","clientes","id_clientes","nombre","1");
 /*
 ==================================================================================================
+FUNCIÓN PARA LISTAR EL MENÚ DE ACUERDO A LOS PERMISOS DADOS A CADA USUARIO
+LA FUNCIÓN COGERÁ EL ID DE USUARIO POR VARIABLES y MOSTRARÁ SU MENU
+==================================================================================================
+*/
+function Menu_Pintar2($conex,$usuario){
+	$padre= ' ';
+	$iniciohijo= ' ';
+	$hijo= ' ';
+	$finhijo= ' ';
+	$finpadre= ' ';
+
+		$conex= conectar();
+		$consulta="SELECT * FROM permisos,menus WHERE permisos.menu_id=menus.id_menu AND usuario=".$usuario;
+		$i=mysqli_query($conex,$consulta);
+	
+		//$menu .= '<ul>';
+		$iniciohijo .='<ul>';
+		while ($in=mysqli_fetch_array($i)){
+
+			//<li class="dropdown"><a href="#"><span class="iconfa-th-list"></span> Tareas</a>
+			if($in["padre"]==0) {
+				$padre .= '<li class="dropdown"><a href="'.$in["url"].'"><span class=iconfa-th-list"></span> '.$in["etiqueta"].'</a>';
+				
+			}
+			if($in["padre"]==1){
+				$hijo .='<li><a href='.$in["url"].'> '.$in["etiqueta"].'</a></li>';
+				
+			}	
+
+			
+		
+		}
+		$finpadre .= '</li>';
+		$finhijo .='</ul>';
+		
+
+		//echo '<div id="tabs">'.$padre,$hijo.'</div>';
+		echo '<div class="leftmenu">        
+            <ul class="nav nav-tabs nav-stacked">
+                <li class="nav-header">MI MENU</li>
+                <li class="active"><a href="index.php"><span class="iconfa-laptop"></span>PORTADA</a></li>'.$padre,$iniciohijo,$hijo,$finhijo,$finpadre.'</ul> 
+        </div>';
+		
+}
+
+
+/*
+==================================================================================================
 --- NO ESTÁ TERMINADO --- (FUNCIÓN QUE LISTA LAS TAREAS)
 ==================================================================================================
 */
@@ -430,48 +506,32 @@ function ListarTareas($conex,$isdeleted,$estado){
 	echo '</select>'; 
   
 }
-/*
-==================================================================================================
-FUNCIÓN QUE LISTA LAS TAREAS SEGUN PRIORIDAD ---HECHO---
-==================================================================================================
-*/
-function listatareas2($con,$prio){
-	echo'<h1>TAREAS DE PRIORIDAD'.$prio.'</h1>';
 
-
-
-echo'<table width="100%" border="0" class="display datatable">
-
-    <thead>
-
-     <tr>
-
-        <th width="5%" align="center">Nº</th>
-
-        <th width="10%" align="center">FECHA</th>
-
-        <th width="15%" align="center">CLIENTE</th>
-
-        <th width="10%" align="center">SECCIÓN</th>
-
-        <th width="45%" align="left">TAREA</th>
-
-        <th width="10%" align="center">€</th>
-
-        <th width="5%" align="center">MÁS</th>
-
-      </tr>
-
-    </thead>
-
-    <tbody>';
+function Lista_Tareas2($con,$prioridad,$isdeleted){
 	  $con=conectar();
+	 
 //	  $query="SELECT *,date_format(fecha, '%d/%m/%Y') AS Fecha FROM tareas WHERE prioridad='CRITICO'";
-	  $qr="SELECT * FROM tareas,clientes,prioridades,categorias WHERE tareas.cliente = clientes.id_clientes AND tareas.prioridad=prioridades.id_prioridad AND tareas.categoria=categorias.id_categoria AND prioridad =".$prio." AND isdeleted='0'";
-	  		
-		$result=consulta_sql($con,$qr);
-	$i=0;
+
+	  $qr="SELECT *,date_format(tareas.fecha, '%d/%m/%Y') FROM tareas,clientes WHERE tareas.cliente=clientes.id_clientes AND tareas.prioridad=$prioridad AND tareas.isdeleted=$isdeleted";
+	  $result=consulta_sql($con,$qr);
+	  
+	echo'
+	<table width="100%" border="0" class="display datatable">
+    <thead>
+      <tr>
+        <th width="5%" align="center">Nº</th>
+        <th width="10%" align="center">FECHA</th>
+        <th width="15%" align="center">CLIENTE</th>
+        <th width="10%" align="center">SECCIÓN</th>
+        <th width="45%" align="left">TAREA</th>
+        <th width="10%" align="center">€</th>
+        <th width="5%" align="center">MÁS</th>
+      </tr>
+    </thead>  
+	<tbody>'; 
+		$i=0;
 		while($info=mysqli_fetch_array($result)){
+		  
 		  echo "<td width='3%' class='fila_". $i%2 ."'>".utf8_encode ($info['num'])."</td>";
 		  echo "<td width='10%' class='fila_". $i%2 ."'>".$info['fecha']."</td>";
 		  echo "<td width='15%' class='fila_". $i%2 ."'>".utf8_encode ($info['nombre_cliente'])."</td>";
@@ -481,9 +541,51 @@ echo'<table width="100%" border="0" class="display datatable">
 		  echo "<td width='7%' class='fila_". $i%2 ."'><a href='editar-borrar.php?id=".$info['num']."'><img src='images/edit.png' width='16' height='16'/></a> | <a href='todo.php?id=".$info['num']."&del=1'><img src='images/delete.png' width='16' height='16' /></a></td></tr>";
 		 $i++;
 		  }
-		  echo'</tbody>';
+		
+		echo'      
+    	</tbody>
+		</table>';
+
 }
+		
 //$conecto=conectar();
 //ListarTareas($conecto,"","","","","","","");
-?>
 
+function Listar_Tareas03($con,$prioridad){
+$con=conectar();
+
+$consulta01="SELECT * FROM tareas WHERE prioridad=$prioridad";
+$envio01=mysqli_query($con,$consulta01);
+
+	
+		echo'
+	<table width="100%" border="0" class="display datatable">
+    <thead>
+      <tr>
+        <th width="5%" align="center">Nº</th>
+        <th width="10%" align="center">FECHA</th>
+        <th width="15%" align="center">CLIENTE</th>
+        <th width="10%" align="center">SECCIÓN</th>
+        <th width="45%" align="left">TAREA</th>
+        <th width="10%" align="center">€</th>
+        <th width="5%" align="center">MÁS</th>
+      </tr>
+    </thead>  
+	<tbody>'; 
+	$i=0;
+	while($resultado01=mysqli_fetch_array($envio01)){
+		
+		  echo "<td width='3%' class='fila_". $i%2 ."'>".utf8_encode ($resultado01['num'])."</td>";
+		  echo "<td width='10%' class='fila_". $i%2 ."'>".$resultado01['fecha']."</td>";
+		  echo "<td width='15%' class='fila_". $i%2 ."'>".utf8_encode ($resultado01['cliente'])."</td>";
+		  echo "<td width='10%' class='fila_". $i%2 ."'>".utf8_encode ($resultado01['categoria'])."</td>";
+		  echo "<td width='35%' class='fila_". $i%2 ."'>".utf8_encode ($resultado01['tarea'])."</td>";
+		  echo "<td width='10%' class='fila_". $i%2 ."'>".utf8_encode ($resultado01['importe'])."</td>";
+		  echo "<td width='7%' class='fila_". $i%2 ."'><a href='editar-borrar.php?id=".$resultado01['num']."'><img src='images/edit.png' width='16' height='16'/></a> | <a href='todo.php?id=".$resultado01['num']."&del=1'><img src='images/delete.png' width='16' height='16' /></a></td></tr>";
+	$i++;
+	}
+	echo'      
+    	</tbody>
+		</table>';
+}
+?>
