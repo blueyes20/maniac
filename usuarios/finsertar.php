@@ -66,3 +66,4 @@ extract ($_GET);
                 </div><!-- widgetcontent-->
             </div><!-- widgetcontent-->
         </div>
+    </div>

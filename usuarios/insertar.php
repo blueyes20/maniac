@@ -8,24 +8,19 @@ $nombreusu = $_POST['nombreusu'];
 $email = $_POST['email'];
 $telef = $_POST['telef'];
 $password = md5($_POST['contrasena']);
+////
+
+//mysqli_select_db($con,todo_maniac);
+
+$total = mysqli_num_rows(mysqli_query($con,"SELECT nombreusu FROM usuarios WHERE nombreusu='".$nombreusu."'"));
+if($total!=0){
+	echo 'Hay '.$total.' usuario registrado con ese nombre';
 
 
+}else{
 
-if($query="SELECT * FROM usuarios WHERE numbreusu like '".$nombreusu."'"){
-	//el usuario existe
-    echo "El usuario --> ".$nombreusu." --> ya existe";
-	
-			
-			//$inserta="INSERT INTO todo_maniac.usuarios (nombreusu, contrasena, email, telef) VALUES ('".$nombreusu."', '".$password."', '".$email."', '".$telef."')";
-			//if(mysqli_query($con, $inserta)==true) {
-			
-
-
-
-
-			
-    	
-	}else{
+//echo 'No hay usuarios';
+////
 
 		$inserta="INSERT INTO todo_maniac.usuarios (nombreusu, contrasena, email, telef) VALUES ('".$nombreusu."', '".$password."', '".$email."', '".$telef."')";
 			if(mysqli_query($con, $inserta)==true) {
@@ -40,6 +35,6 @@ if($query="SELECT * FROM usuarios WHERE numbreusu like '".$nombreusu."'"){
 <?php
 		
 			}//abro php de nuevo solo para cerrar el if
-	}
 
+}
 ?>

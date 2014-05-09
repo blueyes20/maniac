@@ -2,10 +2,10 @@
 -- version 3.5.2
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 08-05-2014 a las 14:33:16
--- Versión del servidor: 5.5.25a
--- Versión de PHP: 5.4.4
+-- Host: localhost
+-- Generation Time: May 08, 2014 at 06:16 PM
+-- Server version: 5.5.25a
+-- PHP Version: 5.4.4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `todo_maniac`
+-- Database: `todo_maniac`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `categorias`
+-- Table structure for table `categorias`
 --
 
 CREATE TABLE IF NOT EXISTS `categorias` (
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `categorias` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
--- Volcado de datos para la tabla `categorias`
+-- Dumping data for table `categorias`
 --
 
 INSERT INTO `categorias` (`id_categoria`, `categoria`) VALUES
@@ -49,7 +49,7 @@ INSERT INTO `categorias` (`id_categoria`, `categoria`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `clientes`
+-- Table structure for table `clientes`
 --
 
 CREATE TABLE IF NOT EXISTS `clientes` (
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `clientes` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Volcado de datos para la tabla `clientes`
+-- Dumping data for table `clientes`
 --
 
 INSERT INTO `clientes` (`id_clientes`, `nombre_cliente`, `telefono`, `isborrado`) VALUES
@@ -74,7 +74,7 @@ INSERT INTO `clientes` (`id_clientes`, `nombre_cliente`, `telefono`, `isborrado`
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `menus`
+-- Table structure for table `menus`
 --
 
 CREATE TABLE IF NOT EXISTS `menus` (
@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `menus` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Volcado de datos para la tabla `menus`
+-- Dumping data for table `menus`
 --
 
 INSERT INTO `menus` (`id_menu`, `etiqueta`, `url`, `padre`, `orden`, `publicado`) VALUES
@@ -102,7 +102,7 @@ INSERT INTO `menus` (`id_menu`, `etiqueta`, `url`, `padre`, `orden`, `publicado`
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `permisos`
+-- Table structure for table `permisos`
 --
 
 CREATE TABLE IF NOT EXISTS `permisos` (
@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `permisos` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Volcado de datos para la tabla `permisos`
+-- Dumping data for table `permisos`
 --
 
 INSERT INTO `permisos` (`id_permiso`, `usuario`, `menu_id`) VALUES
@@ -126,7 +126,7 @@ INSERT INTO `permisos` (`id_permiso`, `usuario`, `menu_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `prioridades`
+-- Table structure for table `prioridades`
 --
 
 CREATE TABLE IF NOT EXISTS `prioridades` (
@@ -136,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `prioridades` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Volcado de datos para la tabla `prioridades`
+-- Dumping data for table `prioridades`
 --
 
 INSERT INTO `prioridades` (`id_prioridad`, `nombre_prioridad`) VALUES
@@ -149,7 +149,7 @@ INSERT INTO `prioridades` (`id_prioridad`, `nombre_prioridad`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tareas`
+-- Table structure for table `tareas`
 --
 
 CREATE TABLE IF NOT EXISTS `tareas` (
@@ -165,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `tareas` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
--- Volcado de datos para la tabla `tareas`
+-- Dumping data for table `tareas`
 --
 
 INSERT INTO `tareas` (`num`, `fecha`, `cliente`, `categoria`, `prioridad`, `tarea`, `importe`, `isdeleted`) VALUES
@@ -182,7 +182,7 @@ INSERT INTO `tareas` (`num`, `fecha`, `cliente`, `categoria`, `prioridad`, `tare
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
@@ -192,10 +192,10 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `email` varchar(100) DEFAULT NULL,
   `telef` varchar(13) DEFAULT NULL,
   PRIMARY KEY (`codusu`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`codusu`, `nombreusu`, `contrasena`, `email`, `telef`) VALUES
