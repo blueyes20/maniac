@@ -2,10 +2,10 @@
 -- version 3.5.2
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: May 08, 2014 at 06:16 PM
--- Server version: 5.5.25a
--- PHP Version: 5.4.4
+-- Servidor: localhost
+-- Tiempo de generación: 09-05-2014 a las 14:21:25
+-- Versión del servidor: 5.5.25a
+-- Versión de PHP: 5.4.4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,39 +17,40 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `todo_maniac`
+-- Base de datos: `todo_maniac`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categorias`
+-- Estructura de tabla para la tabla `categorias`
 --
 
 CREATE TABLE IF NOT EXISTS `categorias` (
   `id_categoria` int(11) NOT NULL AUTO_INCREMENT,
   `categoria` varchar(90) NOT NULL,
+  `isborrao2` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_categoria`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
--- Dumping data for table `categorias`
+-- Volcado de datos para la tabla `categorias`
 --
 
-INSERT INTO `categorias` (`id_categoria`, `categoria`) VALUES
-(1, 'IMPRENTA'),
-(2, 'DISEÑO WEB'),
-(3, 'POSICIONAMIENTO WEB'),
-(4, 'MANTENIMIENTO WEB'),
-(5, 'WEB HOTEL'),
-(6, 'WEB INMOBILIARIA'),
-(7, 'CAPTAR CLIENTES'),
-(8, 'GESTIÓNES CASHUBA');
+INSERT INTO `categorias` (`id_categoria`, `categoria`, `isborrao2`) VALUES
+(1, 'IMPRENTA', 0),
+(2, 'DISEÑO WEB', 0),
+(3, 'POSICIONAMIENTO WEB', 0),
+(4, 'MANTENIMIENTO WEB', 0),
+(5, 'WEB HOTEL', 0),
+(6, 'WEB INMOBILIARIA', 0),
+(7, 'CAPTAR CLIENTES', 0),
+(8, 'GESTIÓNES CASHUBA', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `clientes`
+-- Estructura de tabla para la tabla `clientes`
 --
 
 CREATE TABLE IF NOT EXISTS `clientes` (
@@ -61,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `clientes` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `clientes`
+-- Volcado de datos para la tabla `clientes`
 --
 
 INSERT INTO `clientes` (`id_clientes`, `nombre_cliente`, `telefono`, `isborrado`) VALUES
@@ -74,7 +75,7 @@ INSERT INTO `clientes` (`id_clientes`, `nombre_cliente`, `telefono`, `isborrado`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menus`
+-- Estructura de tabla para la tabla `menus`
 --
 
 CREATE TABLE IF NOT EXISTS `menus` (
@@ -88,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `menus` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `menus`
+-- Volcado de datos para la tabla `menus`
 --
 
 INSERT INTO `menus` (`id_menu`, `etiqueta`, `url`, `padre`, `orden`, `publicado`) VALUES
@@ -102,7 +103,7 @@ INSERT INTO `menus` (`id_menu`, `etiqueta`, `url`, `padre`, `orden`, `publicado`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `permisos`
+-- Estructura de tabla para la tabla `permisos`
 --
 
 CREATE TABLE IF NOT EXISTS `permisos` (
@@ -113,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `permisos` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `permisos`
+-- Volcado de datos para la tabla `permisos`
 --
 
 INSERT INTO `permisos` (`id_permiso`, `usuario`, `menu_id`) VALUES
@@ -126,30 +127,31 @@ INSERT INTO `permisos` (`id_permiso`, `usuario`, `menu_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `prioridades`
+-- Estructura de tabla para la tabla `prioridades`
 --
 
 CREATE TABLE IF NOT EXISTS `prioridades` (
   `id_prioridad` int(11) NOT NULL AUTO_INCREMENT,
   `nombre_prioridad` varchar(45) NOT NULL DEFAULT '0',
+  `isborrao` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_prioridad`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `prioridades`
+-- Volcado de datos para la tabla `prioridades`
 --
 
-INSERT INTO `prioridades` (`id_prioridad`, `nombre_prioridad`) VALUES
-(1, 'CRITICO'),
-(2, 'MEDIA'),
-(3, 'BAJA'),
-(5, 'MUY BAJA'),
-(6, 'FIN DE SEMANA');
+INSERT INTO `prioridades` (`id_prioridad`, `nombre_prioridad`, `isborrao`) VALUES
+(1, 'CRITICA', 0),
+(2, 'MEDIA', 0),
+(3, 'BAJA', 0),
+(4, 'MUY BAJA', 0),
+(5, 'FIN DE SEMANA', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tareas`
+-- Estructura de tabla para la tabla `tareas`
 --
 
 CREATE TABLE IF NOT EXISTS `tareas` (
@@ -162,10 +164,10 @@ CREATE TABLE IF NOT EXISTS `tareas` (
   `importe` int(15) NOT NULL,
   `isdeleted` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`num`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
--- Dumping data for table `tareas`
+-- Volcado de datos para la tabla `tareas`
 --
 
 INSERT INTO `tareas` (`num`, `fecha`, `cliente`, `categoria`, `prioridad`, `tarea`, `importe`, `isdeleted`) VALUES
@@ -176,13 +178,12 @@ INSERT INTO `tareas` (`num`, `fecha`, `cliente`, `categoria`, `prioridad`, `tare
 (5, '2013-12-27 22:05:41', 1, 4, 1, 'WEB CORPORATIVA', 195, 0),
 (6, '2014-04-22 10:07:52', 2, 2, 2, 'Prueba', 10, 0),
 (7, '2014-04-22 11:37:42', 2, 2, 2, 'DISEÑO TARJETONES PARA BOTELLAS', 195, 0),
-(8, '2014-04-22 11:39:36', 1, 4, 2, 'WEB CORPORATIVA', 195, 0),
-(15, '2014-05-06 12:42:33', 0, 0, 0, '', 0, 0);
+(8, '2014-04-22 11:39:36', 1, 4, 2, 'WEB CORPORATIVA', 195, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
@@ -192,10 +193,10 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `email` varchar(100) DEFAULT NULL,
   `telef` varchar(13) DEFAULT NULL,
   PRIMARY KEY (`codusu`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `usuarios`
+-- Volcado de datos para la tabla `usuarios`
 --
 
 INSERT INTO `usuarios` (`codusu`, `nombreusu`, `contrasena`, `email`, `telef`) VALUES
