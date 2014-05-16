@@ -1,14 +1,10 @@
 <?php
-
-//editar-borrar.php?id=1
-
-// me va a venir el id de la tarea y tengo que poder:
-// a) editarla
-// b) borrarla
-
-extract ($_GET);
-
-// EDITAMOS UNA TAREA
+    //editar-borrar.php?id=1
+    // me va a venir el id de la tarea y tengo que poder:
+    // a) editarla
+    // b) borrarla
+    extract ($_GET);
+    // EDITAMOS UNA TAREA
 ?>
   <div class="widget">
                 <h4 class="widgettitle">Formulario de Inserción</h4>

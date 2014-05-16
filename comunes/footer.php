@@ -5,5 +5,4 @@
                     <div class="footer-right">
                         <span>Diseñado por: <a href="http://themepixels.com/">ThemePixels</a></span>
                     </div>
-                </div><?php
-?>
+                </div><?p

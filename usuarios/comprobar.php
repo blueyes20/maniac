@@ -57,6 +57,8 @@ $_SESSION["id_usuario"]=$id_cliente;
 		
 		header ('Location:../portada.php');
 	}else{
+
+		
 header ('Location:../index.php');
 
 	}

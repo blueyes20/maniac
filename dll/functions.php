@@ -472,6 +472,7 @@ function Listar_tareas(){
 		for($a=1;$a<=$maxVar['numero'];$a++){
 		$sql= "SELECT * FROM tareas WHERE prioridad=".$a;
 	$sql2= "SELECT * from prioridades WHERE id_prioridad=".$a;
+	
 	$n=mysqli_query ($con, $sql2);
 	$nn= mysqli_fetch_array($n);
 	$noborrados=$nn['isborrao'];
@@ -488,20 +489,20 @@ $qr="SELECT *,date_format(tareas.fecha, '%d/%m/%Y') AS Fecha FROM tareas,cliente
 	<table width="100%" border="0" class="display datatable">
     <thead>
       <tr>
-        <th width="5%" align="center">Nº</th>
+        <th width="5%" align="center">'.utf8_encode('Nº').'</th>
         <th width="10%" align="center">FECHA</th>
         <th width="15%" align="center">CLIENTE</th>
-        <th width="10%" align="center">SECCIÓN</th>
+        <th width="10%" align="center">'.utf8_encode('SECCIÓN').'</th>
         <th width="45%" align="left">TAREA</th>
-        <th width="10%" align="center">€</th>
-        <th width="5%" align="center">MÁS</th>
+        <th width="10%" align="center">'.utf8_encode('€').'</th>
+        <th width="5%" align="center"></th>
       </tr>
     </thead>  
 	<tbody>'; 
 		$i=0;
 		while($info=mysqli_fetch_array($result)){
 		  
-		  echo "<td width='3%' class='fila_". $i%2 ."'>".utf8_encode ($info['num'])."</td>";
+		  echo "<td width='3%' class='fila_". $i%2 ."'>".$info['num']."</td>";
 		  echo "<td width='10%' class='fila_". $i%2 ."'>".$info['Fecha']."</td>";
 		  echo "<td width='15%' class='fila_". $i%2 ."'>".utf8_encode ($info['nombre_cliente'])."</td>";
 		  echo "<td width='10%' class='fila_". $i%2 ."'>".utf8_encode ($info['categoria'])."</td>";
@@ -527,14 +528,187 @@ $qr="SELECT *,date_format(tareas.fecha, '%d/%m/%Y') AS Fecha FROM tareas,cliente
 
 
 
+/*
+==================================================================================================
+FUNCIÓN QUE LISTA LOS CLIENTES
+==================================================================================================
+*/
+
+function Listar_clientes() {
+	echo'<table width="100%" border="0">
+    <thead>
+      <tr>
+        <th width="5%" align="center">'.utf8_encode('Nº').'</th>
+    
+        <th width="15%" align="center">CLIENTE</th>
+        <th width="15%" align="center">'.utf8_encode('TELÉFONO').'</th>
+        
+        <th width="10%" align="center"></th>
+      </tr>
+    </thead>
+    <tbody>';
+
+	$con=conectar();
+
+	$qr="SELECT * FROM clientes WHERE isborrado=0";
+	  		
+		$result=consulta_sql($con,$qr);
+	$i=0;
+		while($info=mysqli_fetch_array($result)){
+		  echo "<td width='3%' class='fila_". $i%2 ."'>".utf8_encode ($info['id_clientes'])."</td>";
+		  echo "<td width='15%' class='fila_". $i%2 ."'>".utf8_encode ($info['nombre_cliente'])."</td>";
+		  echo "<td width='10%' class='fila_". $i%2 ."'>".utf8_encode ($info['telefono'])."</td>";
+		  echo "<td width='7%' class='fila_". $i%2 ."'><a href='index.php?&sec=clientes&view=editar-borrar&id=".$info['id_clientes']."'><img src='images/edit.png' width='16' height='16'/></a> | <a href='index.php?&sec=clientes&view=borrar&id=".$info['id_clientes']."&del=1'><img src='images/delete.png' width='16' height='16' /></a></td></tr>";
+		 $i++;
+		  }
+
+		      echo'</tbody>
+</table>';
+
+
+
+}
 
 
 
 
-
+//////////////
 /**/
 
+/*
+==================================================================================================
+FUNCIÓN QUE LISTA LAS PRIORIDADES
+==================================================================================================
+*/
 
+function Listar_prioridades()  {
+
+echo'<table width="100%" border="0">
+    <thead>
+      <tr>
+        <th width="5%" align="center">'.utf8_encode('Nº').'</th>
+    
+        <th width="15%" align="center">PRIORIDAD</th>
+      
+      </tr>
+    </thead>
+    <tbody>';
+      
+	  $con=conectar();
+//	  $query="SELECT *,date_format(fecha, '%d/%m/%Y') AS Fecha FROM tareas WHERE prioridad='CRITICO'";
+//	  $qr="SELECT *,date_format(fecha, '%d/%m/%Y') AS Fecha FROM tareas LEFT JOIN clientes ON tareas.cliente = clientes.id_clientes WHERE prioridad = 'CRITICO'";
+	  $qr="SELECT * FROM prioridades WHERE isborrao=0";
+	  		
+		$result=consulta_sql($con,$qr);
+	$i=0;
+		while($info=mysqli_fetch_array($result)){
+		  echo "<td width='3%' class='fila_". $i%2 ."'>".utf8_encode ($info['id_prioridad'])."</td>";
+		  echo "<td width='15%' class='fila_". $i%2 ."'>".utf8_encode ($info['nombre_prioridad'])."</td>";  
+		  echo "<td width='7%' class='fila_". $i%2 ."'><a href='index.php?&sec=prioridades&view=editar-borrar&id=".$info['id_prioridad']."'><img src='images/edit.png' width='16' height='16'/></a> | <a href='index.php?&sec=prioridades&view=borrar&id=".$info['id_prioridad']."&del=1'><img src='images/delete.png' width='16' height='16' /></a></td></tr>";
+		 $i++;
+		  }
+	  
+
+     
+    echo'</tbody>
+</table>';
+
+
+
+}
+
+///////////////////////
+
+/*
+==================================================================================================
+FUNCIÓN QUE LISTA LAS CATEGORÍAS
+==================================================================================================
+*/
+
+function Listar_categorias() {
+
+echo'<table width="100%" border="0">
+    <thead>
+      <tr>
+        <th width="5%" align="center">'.utf8_encode('Nº').'</th>
+    
+        <th width="15%" align="center">'.utf8_encode('CATEGORÍA').'</th>
+        <th width="10%" align="center"></th>
+      
+      </tr>
+    </thead>
+    <tbody>';
+      
+	  $con=conectar();
+//	  $query="SELECT *,date_format(fecha, '%d/%m/%Y') AS Fecha FROM tareas WHERE prioridad='CRITICO'";
+//	  $qr="SELECT *,date_format(fecha, '%d/%m/%Y') AS Fecha FROM tareas LEFT JOIN clientes ON tareas.cliente = clientes.id_clientes WHERE prioridad = 'CRITICO'";
+	  $qr="SELECT * FROM categorias WHERE isborrao2=0";
+	  		
+		$result=consulta_sql($con,$qr);
+	$i=0;
+		while($info=mysqli_fetch_array($result)){
+		  echo "<td width='3%' class='fila_". $i%2 ."'>".utf8_encode ($info['id_categoria'])."</td>";
+		  echo "<td width='15%' class='fila_". $i%2 ."'>".utf8_encode ($info['categoria'])."</td>";
+		  echo "<td width='7%' class='fila_". $i%2 ."'><a href='index.php?&sec=categorias&view=editar-borrar&id=".$info['id_categoria']."'><img src='images/edit.png' width='16' height='16'/></a> | <a href='index.php?&sec=categorias&view=borrar&id=".$info['id_categoria']."&del=1'><img src='images/delete.png' width='16' height='16' /></a></td></tr>";		 
+		 $i++;
+		  }
+	  
+
+      
+    echo'</tbody>
+</table>';
+
+}
+
+
+///////////////////////
+
+/*
+==================================================================================================
+FUNCIÓN QUE LISTA LOS USUARIOS
+==================================================================================================
+*/
+
+function Listar_usuarios (){
+
+echo'<table width="100%" border="0">
+    <thead>
+      <tr>
+        <th width="5%" align="center">'.utf8_encode('Nº').'</th>
+    
+        <th width="15%" align="center">USUARIO</th>
+        <th width="15%" align="center">EMAIL</th>
+        <th width="15%" align="center">'.utf8_encode('TELÉFONO').'</th>
+        
+        <th width="10%" align="center"></th>
+      </tr>
+    </thead>
+    <tbody>';
+      
+	  $con=conectar();
+//	  $query="SELECT *,date_format(fecha, '%d/%m/%Y') AS Fecha FROM tareas WHERE prioridad='CRITICO'";
+//	  $qr="SELECT *,date_format(fecha, '%d/%m/%Y') AS Fecha FROM tareas LEFT JOIN clientes ON tareas.cliente = clientes.id_clientes WHERE prioridad = 'CRITICO'";
+	  $qr="SELECT * FROM usuarios";
+	  		
+		$result=consulta_sql($con,$qr);
+	$i=0;
+		while($info=mysqli_fetch_array($result)){
+		  echo "<td width='3%' class='fila_". $i%2 ."'>".utf8_encode ($info['codusu'])."</td>";
+		  echo "<td width='15%' class='fila_". $i%2 ."'>".utf8_encode ($info['nombreusu'])."</td>";
+		  echo "<td width='15%' class='fila_". $i%2 ."'>".utf8_encode ($info['email'])."</td>";
+		  echo "<td width='15%' class='fila_". $i%2 ."'>".utf8_encode ($info['telef'])."</td>";
+		  echo "<td width='7%' class='fila_". $i%2 ."'><a href='index.php?&sec=usuarios&view=editar-borrar&id=".$info['codusu']."'><img src='images/edit.png' width='16' height='16'/></a> | <a href='index.php?&sec=usuarios&view=borrar&id=".$info['codusu']."&del=1'><img src='images/delete.png' width='16' height='16' /></a></td></tr>";
+		 $i++;
+		  }
+	  
+
+      
+    echo'</tbody>
+</table>';
+
+}
+
+///////////////////////////
 
 
 function Lista_Tareas2($con,$prioridad,$isdeleted){

@@ -1,8 +1,9 @@
-<?php
-  session_start();
-  //unset($_SESSION["autenticado"]);
- 
-  session_destroy();
-  header("Location: index.php");
-  exit();
+<?php 
+ //Crear sesión
+ session_start();
+ //Destruir Sesión
+ session_destroy();
+ //Redireccionar a login.php
+ header("location: index.php");
+ exit();
 ?>
