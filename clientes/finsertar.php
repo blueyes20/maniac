@@ -6,40 +6,30 @@
     extract ($_GET);
     // EDITAMOS UNA TAREA
 ?>
-  <div class="widget">
+    <div class="widget">
                 <h4 class="widgettitle">Formulario de Inserción</h4>
                 <div class="widgetcontent">
                     <form role="form" method="post" action="index.php?&sec=clientes&view=insertar">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Cliente</label>
                           
-                            <div>
+                                <div>
                               
-            <textarea name="nombre_cliente" rows="1" cols="10"></textarea>
+                                    <textarea name="nombre_cliente" rows="1" cols="10"></textarea>
                 
 
-                </div>
-                </div>
-                <br/>
-                        
+                                </div>
+                        </div>
+                        <br/>
                         <br/>
                         <div class="form-group">
                             <label for="exampleInputFile">Teléfono</label>
-
-
-<div>
-    
-          <textarea name="telefono" rows="1" cols="10"></textarea>
-        
-    </div>
-    
-
-                            
-                        <br /><br />
-                        <!--<input type="hidden" name="id" value="<?php echo $id; ?>"/>-->
+                            <div>
+                                <textarea name="telefono" rows="1" cols="10"></textarea>
+                            </div>
+                            <br />
+                            <br />
                         <button type="submit" name="OK" value="editar" class="btn btn-default">Insertar</button>
                     </form>
-
-
                 </div><!-- widgetcontent-->
-            </div><!-- widgetcontent-->
+    </div><!-- widgetcontent-->

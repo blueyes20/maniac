@@ -5,7 +5,6 @@
 /*******************************************************************/
 //requerimos las variables globales
 
-
 require ('config.php');
 
 function conectar($bbdd){

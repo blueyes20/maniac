@@ -1,14 +1,4 @@
-<!--<div class="leftpanel">
-        
-        
-<?php
-    Menu_Pintar2($con,2);
-    ?>
-     
-        
-    </div>-->
 <div class="leftpanel">
-        
         <div class="leftmenu">        
             <ul class="nav nav-tabs nav-stacked">
             	<li class="nav-header">MI MENU</li>
@@ -45,11 +35,10 @@
                 </li>
                  <li class="dropdown"><a href=""><span class="iconfa-envelope"></span> Notificaciones - Chat</a>
                     <ul>
-                        <li><a href="messages.html">Nueva conversación</a></li>
-                        <li><a href="chat.html">Ver pendientes</a></li>
+                        <li><a href="index.php?&sec=mensajes&view=crear-mensajes">Crear Mensaje</a></li>
+                        <li><a href="index.php?&sec=mensajes&view=listar-mensajes">Ver Mensajes</a></li>
                     </ul>
                 </li>
             </ul> 
         </div>
-        
-    </div> 
+</div>
