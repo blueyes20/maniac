@@ -496,5 +496,17 @@ echo'<table width="100%" border="0">
 
 }
 
+/*
+==================================================================================================
+---no implementada---LISTAR EN UNA TABLA (MODO GENERALIZADO, utilizado para listar los mensajes)
+==================================================================================================
+*/
+
+function Listando () {
+
+	###implementar en modo general.
+
+}
+
 
 ?>

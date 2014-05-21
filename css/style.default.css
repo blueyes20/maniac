@@ -32,7 +32,7 @@ del, dfn, em, font, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 b, u, i, center, ol, ul, li,
 fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td {
+table, caption, tbody, tfoot, thead, th, td {
 	background: transparent;
 	border: 0;
 	margin: 0;
@@ -40,6 +40,13 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 	vertical-align: baseline;
 	line-height: 21px;
 	outline: none;
+}
+
+p.blue {
+	color: #0866c6;
+}
+p.blue2 {
+	color: #720000;
 }
 
 ::-webkit-input-placeholder {

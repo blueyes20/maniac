@@ -35,8 +35,9 @@
                 </li>
                  <li class="dropdown"><a href=""><span class="iconfa-envelope"></span> Notificaciones - Chat</a>
                     <ul>
-                        <li><a href="index.php?&sec=mensajes&view=crear-mensajes">Crear Mensaje</a></li>
-                        <li><a href="index.php?&sec=mensajes&view=listar-mensajes">Ver Mensajes</a></li>
+                        <li><a href="index.php?&sec=mensajes&view=listar-mensajes">Mensajes Recibidos</a></li>
+                        <li><a href="index.php?&sec=mensajes&view=listar-enviados-mensajes">Mensajes Enviados</a></li>
+                        <li><a href="index.php?&sec=mensajes&view=crear-mensajes">Crear Nuevo Mensaje</a></li>
                     </ul>
                 </li>
             </ul> 

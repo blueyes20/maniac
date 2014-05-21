@@ -1,122 +1,47 @@
 <form role="form" method="post" action="index.php?&sec=mensajes&view=crear-mensajes">
   <button class="btn btn-default" type="submit">Crear Nuevo Mensaje</button>
+  <div align="center">
+    <p><img src="images/mensaje.png" height="58" width="316"></p>
+  </div>
 </form>
 <br/>
-<!--
-<?php 
-# Incluimos la configuracion
-#include('config.php'); 
-#session_start();
-#if($_SESSION['logueado'] != "SI"){
-#header('location: index.php');
-#exit();
-#}
-# Buscamos los mensajes privados
-#$sql = "SELECT * FROM mensaje WHERE para='".$_SESSION['usuario']."'";
-#$res = mysql_query($sql, $link) or die(mysql_error());
-?>
--->
-
-
-<!-- Formulario extraido de tareas para adaptarlo a un formulario de mensajes -->
-
-<div class="widget">
-    <h4 class="widgettitle">Formulario de Inserción de Tarea</h4>
-      <div class="widgetcontent">
-        <form role="form" method="post" action="index.php?&sec=tareas&view=insertar">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Cliente</label>
-            <div>
-              <?php
-                $consulta="SELECT * FROM tareas";
-                $i=mysqli_query($con,$consulta);
-                $in=mysqli_fetch_array($i);
-                
-                $consulta2="SELECT * FROM clientes";
-                $i2=mysqli_query($con,$consulta2);
-  
-                echo '<select name="cliente" id="cliente">';  
-  
-                  while($in2=mysqli_fetch_array($i2)){
-                    echo'<option value="'.$in2["id_clientes"].'">'.$in2["nombre_cliente"].'</option>';
-                  }
-                echo '</select>';  
-              ?>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Sección</label>
-          <div>
-            <?php
-              $consulta="SELECT * FROM tareas";
-              $i=mysqli_query($con,$consulta);
-              $in=mysqli_fetch_array($i);  
-  
-              $consulta2="SELECT * FROM categorias";
-              $i2=mysqli_query($con,$consulta2);
-              echo '<select name="categoria" id="categoria">';  
-                while($in2=mysqli_fetch_array($i2)){
-                  echo'<option value="'.$in2["id_categoria"].'">'.$in2["categoria"].'</option>';
-                }
-              echo '</select>';  
-            ?>
-          </div> 
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Prioridad</label>
-        <div>
-          <?php
-            $consulta="SELECT * FROM tareas";
-            $i=mysqli_query($con,$consulta);
-            $in=mysqli_fetch_array($i);
-  
-            $consulta2="SELECT * FROM prioridades";
-            $i2=mysqli_query($con,$consulta2);
-  
-            echo '<select name="prioridad" id="prioridad">';  
-              while($in2=mysqli_fetch_array($i2)){
-                echo'<option value="'.$in2["id_prioridad"].'">'.$in2["nombre_prioridad"].'</option>';
-              }
-            echo '</select>';  
-          ?>
-        </div> 
-      </div>
-      <div class="form-group">
-        <label for="exampleInputFile">Tarea</label>
-        <div>
-          <textarea name="tarea" rows="1" cols="10"></textarea>
-        </div>
-        <br />
-        <div class="form-group">
-          <label for="exampleInputFile">Importe</label>
-            <div>
-              <textarea name="importe" rows="1" cols="10"></textarea>
-            </div>
-            <br />
-            <button type="submit" name="OK" value="editar" class="btn btn-default">Insertar</button>
-        </form>
-        </div><!-- widgetcontent-->
-      </div><!-- widgetcontent-->
-</div>
-
-<!-- FIN  Formulario extraido de tareas para adaptarlo a un formulario de mensajes -->
-
-  <table width="800" border="0" align="center" cellpadding="1" cellspacing="1">
+<br/>
+<table width="100%" border="0">
+  <thead>
     <tr>
-      <td width="53" align="center" valign="top"><strong>ID</strong></td>
-      <td width="426" align="center" valign="top"><strong>Asunto</strong></td>
-      <td width="321" align="center" valign="top"><strong>De</strong></td>
-	  <td width="321" align="center" valign="top"><strong>Fecha</strong></td>
+      <th width="5%" align="center">ID</th>
+      <th width="15%" align="center">Asunto</th>
+      <th width="15%" align="center">De</th>
+      <th width="15%" align="center">Fecha</th>
+      <th width="10%" align="center">Borrar</th>
     </tr>
+  </thead>
+  <tbody>
     <?php
-	$i = 0; 
-	while($row = mysql_fetch_assoc($res)){ ?>
-    <tr bgcolor="<?php if($row['leido'] == "si") { echo "#FFE8E8"; } else { if($i%2==0) { echo "#FFE7CE"; } else { echo "#FFCAB0"; } } ?>">
-      <td align="center" valign="top"><?=$row['ID']?></td>
-      <td align="center" valign="top"><a href="leer.php?id=<?=$row['ID']?>"><?=$row['asunto']?></a></td>
-      <td align="center" valign="top"><?=$row['de']?></td>
-	  <td align="center" valign="top"><?=$row['fecha']?></td>
-    </tr>
-<?php $i++; 
-} ?>
-</table>
+      #Listar en una tabla los mensajes para el usuario conectado mediante la siguiente función:
+      
+      #nombre del usuario actual:
+      $select='SELECT * FROM usuarios WHERE codusu='.$_SESSION['id_usuario'];
+      $b=mysqli_query($con,$select); 
+      $matriz=mysqli_fetch_array($b);
+
+      //mensajes (otra tabla) ordenados de manera que los no leídos aparecen arriba:
+      $consulta="SELECT * FROM mensajes WHERE para='".$matriz['nombreusu']."' ORDER BY leido";
+      $result=mysqli_query($con,$consulta);
+   
+      $i=0;
+      while($info=mysqli_fetch_assoc($result)){ ?>
+        <tr bgcolor="<?php if($info["leido"] == "si") { echo "#FFE8E8"; } else { echo "#E8FFE8"; } ?>">
+        <?php
+        echo "<td width='3%' >".utf8_encode ($info["ID"])."</td>";
+        echo "<td width='15%' ><a href='index.php?&sec=mensajes&view=leer-mensajes&id=".$info["ID"]."'>".utf8_encode ($info["asunto"])."</td>";
+        echo "<td width='15%' >".utf8_encode ($info["de"])."</td>";
+        echo "<td width='15%' >".utf8_encode ($info["fecha"])."</td>";
+        echo "<td width='7%' ><a href='index.php?&sec=mensajes&view=borrar-mensajes&id=".$info["ID"]."'><img src='images/delete.png' width='16' height='16' /></a></td></tr>";
+        echo"</tr>";
+      $i++;
+      }
+    
+    ?>
+  </tbody>
+</table>  
