@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-05-2014 a las 14:03:58
+-- Tiempo de generación: 21-05-2014 a las 14:11:04
 -- Versión del servidor: 5.5.25a
 -- Versión de PHP: 5.4.4
 
@@ -87,66 +87,40 @@ CREATE TABLE IF NOT EXISTS `mensajes` (
   `asunto` varchar(180) DEFAULT NULL,
   `texto` text,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
 
 --
 -- Volcado de datos para la tabla `mensajes`
 --
 
 INSERT INTO `mensajes` (`ID`, `para`, `de`, `leido`, `fecha`, `asunto`, `texto`) VALUES
-(1, 'juanico', 'admin', 'si', '19/05/2014, 1:16 pm', 'Hola', 'Holaaaa');
+(1, 'juanico', 'admin', 'si', '19/05/2014, 1:16 pm', 'Hola', 'Holaaaa'),
+(2, 'juanico', 'admin', 'si', '20/05/2014, 10:22 am', 'Hi', 'asdfadsfadsf'),
+(10, 'admin', 'juanico', 'si', '20/05/2014, 2:08 pm', 'RE: Hi', 'respuesta para admin de juanico'),
+(19, 'maria', 'juanico', NULL, '21/05/2014, 10:14 am', 'esto es una prueba', 'ummmm a ver que tal churula esto... tiene buena pinta ;O  ;)'),
+(20, 'admin', 'juanico', 'si', '21/05/2014, 10:24 am', 'RE: Hola', 'dfsdfsdfsadf');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `menus`
+-- Estructura de tabla para la tabla `perfiles`
 --
 
-CREATE TABLE IF NOT EXISTS `menus` (
-  `id_menu` int(11) NOT NULL AUTO_INCREMENT,
-  `etiqueta` varchar(100) NOT NULL,
-  `url` varchar(100) NOT NULL,
-  `padre` int(11) NOT NULL,
-  `orden` int(11) NOT NULL,
-  `publicado` int(11) NOT NULL,
-  PRIMARY KEY (`id_menu`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+CREATE TABLE IF NOT EXISTS `perfiles` (
+  `id_perfil` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre_perfil` varchar(50) NOT NULL,
+  `descripcion` text NOT NULL,
+  `isborradop` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_perfil`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
--- Volcado de datos para la tabla `menus`
+-- Volcado de datos para la tabla `perfiles`
 --
 
-INSERT INTO `menus` (`id_menu`, `etiqueta`, `url`, `padre`, `orden`, `publicado`) VALUES
-(1, 'Tareas', '#', 0, 1, 1),
-(2, 'Lista de Tareas', '/2/maniac4/index.php?&sec=tareas&view=listar-tareas', 1, 1, 1),
-(3, 'Nueva Tarea', '/2/maniac4/index.php?&sec=tareas&view=finsertar', 1, 2, 1),
-(4, 'Clientes', '#', 0, 2, 1),
-(5, 'Lista de Clientes', '/2/maniac4/index.php?&sec=clientes&view=listar-clientes', 4, 1, 1),
-(6, 'Nuevo Cliente', '/2/maniac4/index.php?&sec=clientes&view=finsertar', 4, 2, 1);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `permisos`
---
-
-CREATE TABLE IF NOT EXISTS `permisos` (
-  `id_permiso` int(10) NOT NULL AUTO_INCREMENT,
-  `usuario` int(11) NOT NULL,
-  `menu_id` int(11) NOT NULL,
-  PRIMARY KEY (`id_permiso`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
-
---
--- Volcado de datos para la tabla `permisos`
---
-
-INSERT INTO `permisos` (`id_permiso`, `usuario`, `menu_id`) VALUES
-(1, 2, 1),
-(2, 2, 2),
-(3, 2, 3),
-(4, 2, 4),
-(5, 3, 1);
+INSERT INTO `perfiles` (`id_perfil`, `nombre_perfil`, `descripcion`, `isborradop`) VALUES
+(1, 'Administrador', 'Tiene acceso a todos los menus.', 0),
+(2, 'Trabajador', 'Tiene acceso a tareas y notificaciones-Chat.', 0);
 
 -- --------------------------------------------------------
 
@@ -166,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `prioridades` (
 --
 
 INSERT INTO `prioridades` (`id_prioridad`, `nombre_prioridad`, `isborrao`) VALUES
-(1, 'CRITICA', 0),
+(1, 'CRITICAS', 0),
 (2, 'MEDIA', 0),
 (3, 'BAJA', 0),
 (5, 'MUY BAJA', 0),
@@ -218,6 +192,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `contrasena` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `telef` varchar(13) DEFAULT NULL,
+  `perfil` varchar(13) DEFAULT NULL,
   PRIMARY KEY (`codusu`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
@@ -225,10 +200,10 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`codusu`, `nombreusu`, `contrasena`, `email`, `telef`) VALUES
-(2, 'juanico', '2800df1531c5d6431fe5be95aa98d06b', 'juanico@hola.com', '95.252.00.01'),
-(3, 'maria', '263bce650e68ab4e23f28263760b9fa5', 'maria@hola.com', NULL),
-(4, 'admin', '050248cd2efad770e194ca0e12d44264', 'adminl@hola.com', '95.252.00.00');
+INSERT INTO `usuarios` (`codusu`, `nombreusu`, `contrasena`, `email`, `telef`, `perfil`) VALUES
+(2, 'juanico', '2800df1531c5d6431fe5be95aa98d06b', 'juanico@hola.com', '95.252.00.01', '1'),
+(3, 'maria', '263bce650e68ab4e23f28263760b9fa5', 'maria@hola.com', NULL, '2'),
+(4, 'admin', '050248cd2efad770e194ca0e12d44264', 'adminl@hola.com', '95.252.00.00', '1');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

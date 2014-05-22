@@ -1,9 +1,9 @@
 <form role="form" method="post" action="index.php?&sec=mensajes&view=crear-mensajes">
   <button class="btn btn-default" type="submit">Crear Nuevo Mensaje</button>
   <div>
-    <h3 id="titulin2">Mensajes Recibidos<img id="correo" src="images/mail_icon_1.png" height="50" width="62"></h3>
+    <h3 id="titulin2">Mensajes No Leídos<img id="correo" src="images/mail_icon_1.png" height="50" width="62"></h3>
     <br/>
-    <p><img src="images/mensaje.png" height="58" width="316"></p>
+    <p><img src="images/mensajeno.png" height="58" width="150"></p>
   </div>
 </form>
 <br/>
@@ -28,7 +28,7 @@
       $matriz=mysqli_fetch_array($b);
 
       //mensajes (otra tabla) ordenados de manera que los no leídos aparecen arriba:
-      $consulta="SELECT * FROM mensajes WHERE para='".$matriz['nombreusu']."' ORDER BY leido";
+      $consulta="SELECT * FROM mensajes WHERE para='".$matriz['nombreusu']."' AND leido IS NULL";
       $result=mysqli_query($con,$consulta);
    
       $i=0;

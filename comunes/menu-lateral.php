@@ -22,11 +22,12 @@
                     <ul>
                         <li><a href="index.php?&sec=prioridades&view=listar-prioridades"> Prioridades</a></li>
                         <li><a href="index.php?&sec=categorias&view=listar-categorias"> Categorías</a></li>
+                        <li><a href="index.php?&sec=perfiles&view=listar-perfiles"> Perfiles Usuarios</a></li>
                         
                     </ul>
                 </li>
                 
-                <li class="dropdown"><a href=""><span class="iconfa-hand-up"></span> Usuarios</a>
+                <li class="dropdown"><a href=""><span class="iconfa-user"></span> Usuarios</a>
                     <ul>
                         <li><a href="index.php?&sec=usuarios&view=listar-usuarios"> Lista Usuarios</a></li>
                         <li><a href="index.php?&sec=usuarios&view=finsertar"> Nuevo Usuario</a></li>
@@ -37,7 +38,7 @@
                     <ul>
                         <li><a href="index.php?&sec=mensajes&view=listar-mensajes">Mensajes Recibidos</a></li>
                         <li><a href="index.php?&sec=mensajes&view=listar-enviados-mensajes">Mensajes Enviados</a></li>
-                        <li><a href="index.php?&sec=mensajes&view=crear-mensajes">Crear Nuevo Mensaje</a></li>
+                        <li><a href="index.php?&sec=mensajes&view=crear-mensajes">Mensaje Nuevo</a></li>
                     </ul>
                 </li>
             </ul> 

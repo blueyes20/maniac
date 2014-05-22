@@ -498,6 +498,52 @@ echo'<table width="100%" border="0">
 
 /*
 ==================================================================================================
+FUNCIÓN QUE LISTA LOS PERFILES
+==================================================================================================
+*/
+
+function Listar_perfiles (){
+
+echo'<table width="100%" border="0">
+    <thead>
+      <tr>
+        <th width="5%" align="center">'.utf8_encode('Nº').'</th>
+    
+        <th width="15%" align="center">PERFIL</th>
+        
+        <th width="15%" align="center">'.utf8_encode('DESCRIPCIÓN').'</th>
+        
+        <th width="10%" align="center"></th>
+      </tr>
+    </thead>
+    <tbody>';
+      
+	  $con=conectar();
+//	  $query="SELECT *,date_format(fecha, '%d/%m/%Y') AS Fecha FROM tareas WHERE prioridad='CRITICO'";
+//	  $qr="SELECT *,date_format(fecha, '%d/%m/%Y') AS Fecha FROM tareas LEFT JOIN clientes ON tareas.cliente = clientes.id_clientes WHERE prioridad = 'CRITICO'";
+	  $qr="SELECT * FROM perfiles WHERE isborradop=0";
+	  		
+		$result=consulta_sql($con,$qr);
+	$i=0;
+		while($info=mysqli_fetch_array($result)){
+		  echo "<td width='3%' class='fila_". $i%2 ."'>".utf8_encode ($info['id_perfil'])."</td>";
+		  echo "<td width='15%' class='fila_". $i%2 ."'>".utf8_encode ($info['nombre_perfil'])."</td>";
+		  
+		  echo "<td width='15%' class='fila_". $i%2 ."'>".utf8_encode ($info['descripcion'])."</td>";
+		  echo "<td width='7%' class='fila_". $i%2 ."'><a href='index.php?&sec=perfiles&view=editar-borrar&id=".$info['id_perfil']."'><img src='images/edit.png' width='16' height='16'/></a> | <a href='index.php?&sec=perfiles&view=borrar&id=".$info['id_perfil']."&del=1'><img src='images/delete.png' width='16' height='16' /></a></td></tr>";
+		 $i++;
+		  }
+	  
+
+      
+    echo'</tbody>
+</table>';
+
+}
+
+
+/*
+==================================================================================================
 ---no implementada---LISTAR EN UNA TABLA (MODO GENERALIZADO, utilizado para listar los mensajes)
 ==================================================================================================
 */

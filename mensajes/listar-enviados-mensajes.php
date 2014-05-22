@@ -1,7 +1,7 @@
 <form role="form" method="post" action="index.php?&sec=mensajes&view=crear-mensajes">
   <button class="btn btn-default" type="submit">Crear Nuevo Mensaje</button>
   <div>
-    <h3 id="titulin2">Mensajes Recibidos<img id="correo" src="images/mail_icon_1.png" height="50" width="62"></h3>
+    <h3 id="titulin2">Mensajes Enviados<img id="correo" src="images/correo.gif" height="50" width="62"></h3>
     <br/>
     <p><img src="images/mensaje.png" height="58" width="316"></p>
   </div>
@@ -13,7 +13,7 @@
     <tr>
       <th width="5%" align="center">ID</th>
       <th width="15%" align="center">Asunto</th>
-      <th width="15%" align="center">De</th>
+      <th width="15%" align="center">Para</th>
       <th width="15%" align="center">Fecha</th>
       <th width="10%" align="center">Borrar</th>
     </tr>
@@ -28,7 +28,7 @@
       $matriz=mysqli_fetch_array($b);
 
       //mensajes (otra tabla) ordenados de manera que los no leídos aparecen arriba:
-      $consulta="SELECT * FROM mensajes WHERE para='".$matriz['nombreusu']."' ORDER BY leido";
+      $consulta="SELECT * FROM mensajes WHERE de='".$matriz['nombreusu']."' ORDER BY leido";
       $result=mysqli_query($con,$consulta);
    
       $i=0;
@@ -36,10 +36,10 @@
         <tr bgcolor="<?php if($info["leido"] == "si") { echo "#FFE8E8"; } else { echo "#E8FFE8"; } ?>">
         <?php
         echo "<td width='3%' >".utf8_encode ($info["ID"])."</td>";
-        echo "<td width='15%' ><a href='index.php?&sec=mensajes&view=leer-mensajes&id=".$info["ID"]."'>".utf8_encode ($info["asunto"])."</td>";
-        echo "<td width='15%' >".utf8_encode ($info["de"])."</td>";
+        echo "<td width='15%' ><a href='index.php?&sec=mensajes&view=leer-mensajes-enviados&id=".$info["ID"]."'>".utf8_encode ($info["asunto"])."</td>";
+        echo "<td width='15%' >".utf8_encode ($info["para"])."</td>";
         echo "<td width='15%' >".utf8_encode ($info["fecha"])."</td>";
-        echo "<td width='7%' ><a href='index.php?&sec=mensajes&view=borrar-mensajes&id=".$info["ID"]."'><img src='images/delete.png' width='16' height='16' /></a></td></tr>";
+        echo "<td width='7%' ><a href='index.php?&sec=mensajes&view=borrar-mensajes-enviados&id=".$info["ID"]."'><img src='images/delete.png' width='16' height='16' /></a></td></tr>";
         echo"</tr>";
       $i++;
       }

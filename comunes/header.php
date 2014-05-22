@@ -16,6 +16,7 @@
     <meta name="author" content="CASHUBA.COM - LISTA DE TAREAS"/> 
     <meta name="copyright" content="CASHUBA.COM - LISTA DE TAREAS" />
 
+    <link href='http://fonts.googleapis.com/css?family=Asap:700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Cinzel+Decorative:400,900,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/style.default.css" />
     <link rel="stylesheet" href="css/responsive-tables.css">
@@ -42,6 +43,24 @@
         </div>
         <div class="headerinner">
             <ul class="headmenu">
+                <li class="odd">
+                    <a class="dropdown-toggle" href="index.php?&sec=mensajes&view=listar-mensajes-no-leidos">
+                        <?php
+                            #nombre del usuario actual:
+                            $select='SELECT * FROM usuarios WHERE codusu='.$_SESSION['id_usuario'];
+                            $b=mysqli_query($con,$select); 
+                            $matriz=mysqli_fetch_array($b);
+
+                            #Numero de mensajes sin leer
+                            $sql = "SELECT * FROM mensajes WHERE para='".$matriz['nombreusu']."' AND leido IS NULL";
+                            $res = mysqli_query($con,$sql);
+                            $tot = mysqli_num_rows($res);
+                        ?>
+                        <span class="count"><?=$tot?></span>
+                        <span class="head-icon head-message"></span>
+                        <span class="headmenu-label">Mensajes</span>
+                    </a>
+                </li>
                 <li class="right">
                     <div class="userloggedinfo">
                         
