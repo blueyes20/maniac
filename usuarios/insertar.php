@@ -1,4 +1,12 @@
 <?php
+
+##########################
+#						 #
+#  NO ESTÁ TERMINADOOOO  #
+#						 #
+##########################
+
+
 	require_once("dll/functions.php");
 	$con=conectar();
 	extract($_POST);
@@ -18,6 +26,9 @@
 
 		$inserta="INSERT INTO todo_maniac.usuarios (nombreusu, contrasena, email, telef) VALUES ('".$nombreusu."', '".$password."', '".$email."', '".$telef."')";
 		if(mysqli_query($con, $inserta)==true) {
+			$select = "SELECT COUNT(codusu) AS numusu FROM usuarios";
+			$idUsuario = $select + 1;
+			$insertamenu="INSERT INTO todo_maniac.menusu (usuid,menuid) VALUES ('".$idUsuario."', $tareas)";
 		?>
 			<!--Cierro php temporalmente para incluir el script sin inconvenientes, 
 			pero de todas maneras el php se sigue ejecutando y 

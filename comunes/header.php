@@ -18,6 +18,7 @@
 
     <link href='http://fonts.googleapis.com/css?family=Asap:700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Cinzel+Decorative:400,900,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:700,700italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/style.default.css" />
     <link rel="stylesheet" href="css/responsive-tables.css">
 
@@ -78,6 +79,7 @@
                             <ul>
                                 <?php
                                     echo"<li><a href='index.php?&sec=usuarios&view=editar-borrar&id=".$matriz['codusu']."'>Editar perfil</a></li>";
+                                    echo"<li><a href='index.php?&sec=usuarios&view=editar-contrasena&id=".$matriz['codusu']."'>Editar contraseña</a></li>";
                                 ?>
                                 <li><a href="logout.php">Salir</a></li>
                             </ul>

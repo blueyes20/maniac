@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 21-05-2014 a las 14:11:04
+-- Tiempo de generación: 22-05-2014 a las 14:26:43
 -- Versión del servidor: 5.5.25a
 -- Versión de PHP: 5.4.4
 
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `mensajes` (
   `asunto` varchar(180) DEFAULT NULL,
   `texto` text,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
 
 --
 -- Volcado de datos para la tabla `mensajes`
@@ -98,7 +98,56 @@ INSERT INTO `mensajes` (`ID`, `para`, `de`, `leido`, `fecha`, `asunto`, `texto`)
 (2, 'juanico', 'admin', 'si', '20/05/2014, 10:22 am', 'Hi', 'asdfadsfadsf'),
 (10, 'admin', 'juanico', 'si', '20/05/2014, 2:08 pm', 'RE: Hi', 'respuesta para admin de juanico'),
 (19, 'maria', 'juanico', NULL, '21/05/2014, 10:14 am', 'esto es una prueba', 'ummmm a ver que tal churula esto... tiene buena pinta ;O  ;)'),
-(20, 'admin', 'juanico', 'si', '21/05/2014, 10:24 am', 'RE: Hola', 'dfsdfsdfsadf');
+(20, 'admin', 'juanico', 'si', '21/05/2014, 10:24 am', 'RE: Hola', 'dfsdfsdfsadf'),
+(21, 'juanico', 'admin', NULL, '22/05/2014, 10:10 am', 'RE: RE: Hi', 'asdasd');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `menu`
+--
+
+CREATE TABLE IF NOT EXISTS `menu` (
+  `menuid` int(11) NOT NULL,
+  `nombremenu` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `menu`
+--
+
+INSERT INTO `menu` (`menuid`, `nombremenu`) VALUES
+(1, 'Tareas'),
+(2, 'Clientes'),
+(3, 'Configuración'),
+(4, 'Usuarios'),
+(5, 'Mensajes');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `menusu`
+--
+
+CREATE TABLE IF NOT EXISTS `menusu` (
+  `usuid` int(11) NOT NULL,
+  `menuid` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `menusu`
+--
+
+INSERT INTO `menusu` (`usuid`, `menuid`) VALUES
+(3, 1),
+(3, 2),
+(3, 3),
+(3, 4),
+(3, 5),
+(1, 1),
+(1, 5),
+(2, 1),
+(2, 5);
 
 -- --------------------------------------------------------
 
@@ -112,7 +161,7 @@ CREATE TABLE IF NOT EXISTS `perfiles` (
   `descripcion` text NOT NULL,
   `isborradop` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_perfil`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `perfiles`
@@ -187,23 +236,24 @@ INSERT INTO `tareas` (`num`, `fecha`, `cliente`, `categoria`, `prioridad`, `tare
 --
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
-  `codusu` int(11) NOT NULL AUTO_INCREMENT,
+  `codusu` int(11) NOT NULL,
   `nombreusu` varchar(45) DEFAULT NULL,
   `contrasena` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `telef` varchar(13) DEFAULT NULL,
-  `perfil` varchar(13) DEFAULT NULL,
+  `esborrado` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codusu`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`codusu`, `nombreusu`, `contrasena`, `email`, `telef`, `perfil`) VALUES
-(2, 'juanico', '2800df1531c5d6431fe5be95aa98d06b', 'juanico@hola.com', '95.252.00.01', '1'),
-(3, 'maria', '263bce650e68ab4e23f28263760b9fa5', 'maria@hola.com', NULL, '2'),
-(4, 'admin', '050248cd2efad770e194ca0e12d44264', 'adminl@hola.com', '95.252.00.00', '1');
+INSERT INTO `usuarios` (`codusu`, `nombreusu`, `contrasena`, `email`, `telef`, `esborrado`) VALUES
+(1, 'juanico', '2800df1531c5d6431fe5be95aa98d06b', 'juanico@hola.com', '95.252.00.01', 0),
+(2, 'maria', '263bce650e68ab4e23f28263760b9fa5', 'maria@hola.com', NULL, 0),
+(3, 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'adminl@hola.com', '95.252.00.00', 0),
+(4, 'amparo', '9e515968f859f259fbed85f45a56bc2c', 'amparo@cashuba.com', '95.252.66.66', 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

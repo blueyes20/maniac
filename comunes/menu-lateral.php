@@ -3,44 +3,61 @@
             <ul class="nav nav-tabs nav-stacked">
             	<li class="nav-header">MI MENU</li>
                 <li class="active"><a href="index.php"><span class="iconfa-laptop"></span>PORTADA</a></li>
-                <li class="dropdown"><a href="#"><span class="iconfa-th-list"></span> Tareas</a>
-                    <ul>
-                        <li><a href="index.php?&sec=tareas&view=listar-tareas"> Lista de Tareas</a></li>
-                        <li><a href="index.php?&sec=tareas&view=finsertar"> Nueva Tarea</a></li>
-                        
-                    </ul>
-                </li>
 
-                <li class="dropdown"><a href="#"><span class="iconfa-briefcase"></span> Clientes</a>
-                    <ul>
-                        <li><a href="index.php?&sec=clientes&view=listar-clientes"> Lista de Clientes</a></li>
-                        <li><a href="index.php?&sec=clientes&view=finsertar"> Nuevo Cliente</a></li>
-                        
-                    </ul>
-                </li>
-                <li class="dropdown"><a href=""><span class="iconfa-pencil"></span> Configuración</a>
-                    <ul>
-                        <li><a href="index.php?&sec=prioridades&view=listar-prioridades"> Prioridades</a></li>
-                        <li><a href="index.php?&sec=categorias&view=listar-categorias"> Categorías</a></li>
-                        <li><a href="index.php?&sec=perfiles&view=listar-perfiles"> Perfiles Usuarios</a></li>
-                        
-                    </ul>
-                </li>
+
+                <!-- Comienzan los diferentes apartados-->
+
+                <?php 
+                #Tareas
+                $select='SELECT * FROM menusu WHERE usuid='.$_SESSION['id_usuario'];
+                $b = mysqli_query($con,$select); 
+                $matriz = mysqli_fetch_array($b);
+                $matriz2=matriz['']
                 
-                <li class="dropdown"><a href=""><span class="iconfa-user"></span> Usuarios</a>
-                    <ul>
-                        <li><a href="index.php?&sec=usuarios&view=listar-usuarios"> Lista Usuarios</a></li>
-                        <li><a href="index.php?&sec=usuarios&view=finsertar"> Nuevo Usuario</a></li>
-                        
-                    </ul>
-                </li>
-                 <li class="dropdown"><a href=""><span class="iconfa-envelope"></span> Notificaciones - Chat</a>
-                    <ul>
-                        <li><a href="index.php?&sec=mensajes&view=listar-mensajes">Mensajes Recibidos</a></li>
-                        <li><a href="index.php?&sec=mensajes&view=listar-enviados-mensajes">Mensajes Enviados</a></li>
-                        <li><a href="index.php?&sec=mensajes&view=crear-mensajes">Mensaje Nuevo</a></li>
-                    </ul>
-                </li>
+                switch ($matriz2) {
+                    case 'value':
+                        # code...
+                        break;
+                    
+                    default:
+                        # code...
+                        break;
+                }($menu==1) {
+                    menuTarea ();
+                }
+                
+                ?>
+                
+
+                <?php 
+                #Clientes
+                menuCliente ();
+
+                ?>
+                
+
+                <?php 
+                #Configuración
+                menuConfig ();
+
+                ?>
+                
+
+                <?php 
+                #Usuarios
+                menuUsu ();
+
+                ?>
+                
+
+                 <?php 
+                #Mensajes
+                menuMensaje ();
+
+                ?>
+                
+
+                 <!-- Terminan los diferentes apartados-->
             </ul> 
         </div>
 </div>

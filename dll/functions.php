@@ -476,7 +476,7 @@ echo'<table width="100%" border="0">
 	  $con=conectar();
 //	  $query="SELECT *,date_format(fecha, '%d/%m/%Y') AS Fecha FROM tareas WHERE prioridad='CRITICO'";
 //	  $qr="SELECT *,date_format(fecha, '%d/%m/%Y') AS Fecha FROM tareas LEFT JOIN clientes ON tareas.cliente = clientes.id_clientes WHERE prioridad = 'CRITICO'";
-	  $qr="SELECT * FROM usuarios";
+	  $qr="SELECT * FROM usuarios WHERE esborrado=0";
 	  		
 		$result=consulta_sql($con,$qr);
 	$i=0;
@@ -554,5 +554,91 @@ function Listando () {
 
 }
 
+
+/*
+==================================================================================================
+FUNCIONES PARA MOSTRAR DIFERENTES APARTADOS DEL MENÚ LATERAL.
+==================================================================================================
+*/
+
+function menuTarea () {
+
+	echo'<!-- Inicio Tareas -->
+                <li class="dropdown"><a href="#"><span class="iconfa-th-list"></span> Tareas</a>
+                    <ul>
+                        <li><a href="index.php?&sec=tareas&view=listar-tareas"> Lista de Tareas</a></li>
+
+                        <!-- Inicio Nuevas Tareas-->
+                        <li><a href="index.php?&sec=tareas&view=finsertar"> Nueva Tarea</a></li>
+                        <!-- Fin Nuevas Tareas-->
+                        
+                    </ul>
+                </li>
+                <!-- Fin Tareas -->';
+
+}
+
+function menuCliente () {
+
+	echo'<!-- Inicio Clientes -->
+                <li class="dropdown"><a href="#"><span class="iconfa-briefcase"></span> Clientes</a>
+                    <ul>
+                        <li><a href="index.php?&sec=clientes&view=listar-clientes"> Lista de Clientes</a></li>
+
+                        <!-- Inicio Crear un cliente-->
+                        <li><a href="index.php?&sec=clientes&view=finsertar"> Nuevo Cliente</a></li>
+                        <!-- Fin Crear un cliente -->
+
+                    </ul>
+                </li>
+                <!-- Fin clientes -->';
+
+}
+
+function menuConfig () {
+
+	echo'<!-- Inicio Configuración -->
+                <li class="dropdown"><a href=""><span class="iconfa-pencil"></span> '.utf8_encode('Configuración').'</a>
+                    <ul>
+                        <li><a href="index.php?&sec=prioridades&view=listar-prioridades"> Prioridades</a></li>
+                        <li><a href="index.php?&sec=categorias&view=listar-categorias"> '.utf8_encode('Categorías').'</a></li>
+                        <!--<li><a href="index.php?&sec=perfiles&view=listar-perfiles"> Perfiles Usuarios</a></li>-->
+                        
+                    </ul>
+                </li>
+                <!-- Fin Configuración -->';
+
+}
+
+function menuUsu () {
+
+	echo'<!-- Inicio Usuarios -->
+                <li class="dropdown"><a href=""><span class="iconfa-user"></span> Usuarios</a>
+                    <ul>
+                        <li><a href="index.php?&sec=usuarios&view=listar-usuarios"> Lista Usuarios</a></li>
+
+                        <!-- Inicio nuevo usuario -->
+                        <li><a href="index.php?&sec=usuarios&view=finsertar"> Nuevo Usuario</a></li>
+                        <!-- Fin nueo usuario -->
+                        
+                    </ul>
+                </li>
+                 <!-- Fin Usuarios -->';
+
+}
+
+function menuMensaje () {
+
+	 echo'<!-- Inicio Mensajes -->
+                 <li class="dropdown"><a href=""><span class="iconfa-envelope"></span> Mensajes</a>
+                    <ul>
+                        <li><a href="index.php?&sec=mensajes&view=listar-mensajes">Lista Mensajes Recibidos</a></li>
+                        <li><a href="index.php?&sec=mensajes&view=listar-enviados-mensajes">Lista Mensajes Enviados</a></li>
+                        <li><a href="index.php?&sec=mensajes&view=crear-mensajes">Nuevo Mensaje</a></li>
+                    </ul>
+                </li>
+                 <!-- Fin Mensajes -->';
+
+}
 
 ?>

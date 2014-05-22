@@ -1,2 +1,6 @@
-Bienvenido.
-Esta es la página de contenido donde se van a poner diferentes fotografías.
+
+
+<p id="welcome">Bienvenido!</p>
+<!-- 
+<div id="welcome"><img id="welcomeimg" src="images/welcome2.jpg" height="300" width="460"></div>
+-->

@@ -29,6 +29,31 @@
                             <div>
                                 <textarea name="telef" rows="1" cols="10"></textarea>
                             </div>
+                            <br/>
+                            <label for="exampleInputFile">Elige Menu para este usuario:</label>
+                            
+                            <p>
+                            <label>
+                                <input type="checkbox" name="tareas" value="1" id="CheckboxGroup1_0" />
+                                Tareas</label>
+                                <br />
+                            <label>
+                                <input type="checkbox" name="clientes" value="2" id="CheckboxGroup1_1" />
+                                Clientes</label>
+                                <br />
+                            <label>
+                                <input type="checkbox" name="config" value="3" id="CheckboxGroup1_1" />
+                                Configuración</label>
+                                <br />
+                            <label>
+                                <input type="checkbox" name="usuarios" value="4" id="CheckboxGroup1_1" />
+                                Usuarios</label>
+                                <br />
+                            <label>
+                                <input type="checkbox" name="mensajes" value="5" id="CheckboxGroup1_1" />
+                                Mensajes</label>
+                                <br />
+                            </p>
                             <br /><br />
                             <button type="submit" name="OK" value="editar" class="btn btn-default">Insertar</button>
             </form>

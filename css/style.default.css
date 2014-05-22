@@ -54,6 +54,27 @@ table, caption, tbody, tfoot, thead, th, td {
 	padding-bottom: 40px;
 	
 }*/
+
+#welcome{
+	text-align: center;
+	-webkit-text-stroke: 1px black;
+	font-size: 90px;
+	font-family: 'Ubuntu', sans-serif;
+	padding: 80px;
+   color: #0866c6;
+   text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+
+}
+
+#welcomeimg{
+	
+	box-shadow: 10px 10px 5px #888888;
+}
 #correo{
 	margin-left:10px;
 }
