@@ -8,52 +8,43 @@
                 <!-- Comienzan los diferentes apartados-->
 
                 <?php 
+
                 #Tareas
-                $select='SELECT * FROM menusu WHERE usuid='.$_SESSION['id_usuario'];
-                $b = mysqli_query($con,$select); 
-                $matriz = mysqli_fetch_array($b);
-                $matriz2=matriz['']
+                $select="SELECT menuid FROM menusu WHERE usuid='".$_SESSION['id_usuario']."'";
+                $query = mysqli_query($con,$select); 
                 
-                switch ($matriz2) {
-                    case 'value':
-                        # code...
-                        break;
+                while($menuid = mysqli_fetch_array($query)){
+                     #$menuid['menuid'].'<br/>';
                     
-                    default:
-                        # code...
-                        break;
-                }($menu==1) {
-                    menuTarea ();
+                    if ($menuid['menuid']==1) {
+                        #Tareas
+                        menuTarea ();
+                    }
+
+                    if ($menuid['menuid']==2) {
+                        #Clientes
+                        menuCliente ();
+                    }
+
+                    if ($menuid['menuid']==3) {
+                        #Configuración
+                        menuConfig ();
+                    }
+
+                    if ($menuid['menuid']==4) {
+                        #Usuarios
+                        menuUsu ();
+                    }
+
+                    if ($menuid['menuid']==5) {
+                        #Mensajes
+                        menuMensaje ();
+                    }
+
+                    
                 }
-                
-                ?>
-                
 
-                <?php 
-                #Clientes
-                menuCliente ();
-
-                ?>
-                
-
-                <?php 
-                #Configuración
-                menuConfig ();
-
-                ?>
-                
-
-                <?php 
-                #Usuarios
-                menuUsu ();
-
-                ?>
-                
-
-                 <?php 
-                #Mensajes
-                menuMensaje ();
-
+                    
                 ?>
                 
 
