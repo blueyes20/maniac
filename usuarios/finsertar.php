@@ -1,5 +1,5 @@
 <?php
-    extract ($_GET);
+    #extract ($_GET);
     // EDITAMOS UNA TAREA
 ?>
   <div class="widget">
@@ -15,7 +15,7 @@
                 <div class="form-group">
                     <label for="exampleInputFile">Contraseña</label>
                     <div>
-                        <input type=password name="contrasena" rows="1" cols="10"></input>
+                        <input type="password" name="contrasena" rows="1" cols="10"></input>
                     </div>
                     <br/>
                     <div class="form-group">
@@ -34,23 +34,23 @@
                             
                             <p>
                             <label>
-                                <input type="checkbox" name="tareas" value="1" id="CheckboxGroup1_0" />
+                                <input type="checkbox" name="elmenu1" value="1" id="CheckboxGroup1_0" />
                                 Tareas</label>
                                 <br />
                             <label>
-                                <input type="checkbox" name="clientes" value="2" id="CheckboxGroup1_1" />
+                                <input type="checkbox" name="elmenu2" value="2" id="CheckboxGroup1_1" />
                                 Clientes</label>
                                 <br />
                             <label>
-                                <input type="checkbox" name="config" value="3" id="CheckboxGroup1_1" />
+                                <input type="checkbox" name="elmenu3" value="3" id="CheckboxGroup1_1" />
                                 Configuración</label>
                                 <br />
                             <label>
-                                <input type="checkbox" name="usuarios" value="4" id="CheckboxGroup1_1" />
+                                <input type="checkbox" name="elmenu4" value="4" id="CheckboxGroup1_1" />
                                 Usuarios</label>
                                 <br />
                             <label>
-                                <input type="checkbox" name="mensajes" value="5" id="CheckboxGroup1_1" />
+                                <input type="checkbox" name="elmenu5" value="5" id="CheckboxGroup1_1" />
                                 Mensajes</label>
                                 <br />
                             </p>

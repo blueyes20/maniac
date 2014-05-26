@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 23-05-2014 a las 14:30:42
+-- Tiempo de generación: 26-05-2014 a las 13:12:48
 -- Versión del servidor: 5.5.25a
 -- Versión de PHP: 5.4.4
 
@@ -145,7 +145,6 @@ INSERT INTO `menusu` (`usuid`, `menuid`) VALUES
 (3, 4),
 (3, 5),
 (1, 1),
-(1, 5),
 (2, 1),
 (2, 5);
 
@@ -182,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `prioridades` (
   `nombre_prioridad` varchar(45) NOT NULL DEFAULT '0',
   `isborrao` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_prioridad`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `prioridades`
@@ -192,8 +191,8 @@ INSERT INTO `prioridades` (`id_prioridad`, `nombre_prioridad`, `isborrao`) VALUE
 (1, 'CRITICAS', 0),
 (2, 'MEDIA', 0),
 (3, 'BAJA', 0),
-(5, 'MUY BAJA', 0),
-(6, 'FIN DE SEMANA', 0);
+(4, 'MUY BAJA', 0),
+(5, 'FIN DE SEMANA', 0);
 
 -- --------------------------------------------------------
 
@@ -211,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `tareas` (
   `importe` int(15) NOT NULL,
   `isdeleted` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`num`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Volcado de datos para la tabla `tareas`
@@ -226,8 +225,7 @@ INSERT INTO `tareas` (`num`, `fecha`, `cliente`, `categoria`, `prioridad`, `tare
 (6, '2014-04-22 10:07:52', 2, 2, 2, 'Prueba', 10, 0),
 (7, '2014-04-22 11:37:42', 2, 2, 2, 'DISEÑO TARJETONES PARA BOTELLAS', 195, 0),
 (8, '2014-04-22 11:39:36', 1, 4, 2, 'WEB CORPORATIVA', 195, 0),
-(15, '2014-05-06 12:42:33', 0, 0, 0, '', 0, 0),
-(16, '2014-05-19 11:03:31', 1, 1, 1, 'fghfghfgh', 3333, 1);
+(9, '2014-05-26 11:12:09', 1, 1, 1, 'wser', 30, 0);
 
 -- --------------------------------------------------------
 
@@ -236,14 +234,14 @@ INSERT INTO `tareas` (`num`, `fecha`, `cliente`, `categoria`, `prioridad`, `tare
 --
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
-  `codusu` int(11) NOT NULL,
+  `codusu` int(11) NOT NULL AUTO_INCREMENT,
   `nombreusu` varchar(45) DEFAULT NULL,
   `contrasena` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `telef` varchar(13) DEFAULT NULL,
   `esborrado` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codusu`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`

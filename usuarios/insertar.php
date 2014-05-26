@@ -2,7 +2,7 @@
 
 ##########################
 #						 #
-#  NO ESTÁ TERMINADOOOO  #
+#  Funicona????????????? #
 #						 #
 ##########################
 
@@ -18,26 +18,49 @@
 	$password = md5($_POST['contrasena']);
 	////
 
+
+
 	$total = mysqli_num_rows(mysqli_query($con,"SELECT nombreusu FROM usuarios WHERE nombreusu='".$nombreusu."'"));
 	if($total!=0){
 
-		echo 'Hay '.$total.' usuario registrado con ese nombre';
-	}else{
+		echo '<p>Hay '.$total.' usuario registrado con ese nombre</p>';
+		#botón volver:
+		echo'<br/><form role="form" method="post" action="index.php?&sec=usuarios&view=listar-usuarios">
+		<button class="btn btn-default" type="submit">Volver</button>
+		</form>';
 
+
+		#####
+
+	}else{
 		$inserta="INSERT INTO todo_maniac.usuarios (nombreusu, contrasena, email, telef) VALUES ('".$nombreusu."', '".$password."', '".$email."', '".$telef."')";
 		if(mysqli_query($con, $inserta)==true) {
-			$select = "SELECT COUNT(codusu) AS numusu FROM usuarios";
-			$idUsuario = $select + 1;
-			$insertamenu="INSERT INTO todo_maniac.menusu (usuid,menuid) VALUES ('".$idUsuario."', $tareas)";
-		?>
-			<!--Cierro php temporalmente para incluir el script sin inconvenientes, 
-			pero de todas maneras el php se sigue ejecutando y 
-			si te das cuenta estoy todavía dentro del IF -->
-			<script type='text/javascript'>
-				window.location = "index.php?&sec=usuarios&view=listar-usuarios";
-			</script>
-<?php
-		
-		}//abro php de nuevo solo para cerrar el if
+			
+				$consulta=mysqli_query($con,"SELECT codusu FROM usuarios WHERE nombreusu='".$nombreusu."'");
+				$usuarioId = mysqli_fetch_array($consulta);
+				#echo $usuarioId['codusu'];
+				$idUsuario=$usuarioId['codusu'];
+
+			if(isset($elmenu1) && $elmenu1==1){	
+				$insertamenu=mysqli_query($con,"INSERT INTO todo_maniac.menusu (usuid, menuid) VALUES ('$idUsuario', '$elmenu1')");
+			}				
+			if(isset($elmenu2) && $elmenu2==2){
+				$insertamenu=mysqli_query($con,"INSERT INTO todo_maniac.menusu (usuid, menuid) VALUES ('$idUsuario', '$elmenu2')");
+			}
+			if(isset($elmenu3) && $elmenu3==3){
+				$insertamenu=mysqli_query($con,"INSERT INTO todo_maniac.menusu (usuid, menuid) VALUES ('$idUsuario', '$elmenu3')");
+			}
+			if(isset($elmenu4) && $elmenu4==4){
+				$insertamenu=mysqli_query($con,"INSERT INTO todo_maniac.menusu (usuid, menuid) VALUES ('$idUsuario', '$elmenu4')");
+			}
+			if(isset($elmenu5) && $elmenu5==5){
+				$insertamenu=mysqli_query($con,"INSERT INTO todo_maniac.menusu (usuid, menuid) VALUES ('$idUsuario', '$elmenu5')");
+			}
+			
+			echo"<script type='text/javascript'>window.location = 'index.php?&sec=usuarios&view=listar-usuarios';
+					</script>";
+			
+		}
 	}
+					
 ?>
