@@ -24,7 +24,20 @@ function conectar(){
 				}
 }
 
-
+/*
+===========================================================================
+======= CALENDARIO =====DEFINIMOS LA FUNCION DE CONECTAR A LA BBDD  =======
+===========================================================================*/
+function conectarCal(){
+	$conexion= mysqli_connect (MYSQL_SERVER, MYSQL_USER, MYSQL_PASS, "ecalendar");
+	//echo $conexion;
+		if ($conexion==FALSE){
+			echo  "error de conexion".mysqli_connect_error();
+			exit();
+			}else{
+				return $conexion;
+				}
+}
 /*
 ==========================================================
 ===== DEFINIMOS LA FUNCION DE DESCONECTAR A LA BBDD ======

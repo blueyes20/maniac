@@ -9,19 +9,19 @@
                 <div class="form-group">
                     <label for="exampleInputEmail1">Usuario</label>
                     <div>      
-                        <textarea name="nombreusu" rows="1" cols="10"></textarea>
+                        <input name="nombreusu" rows="1" cols="10" required/>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputFile">Contraseña</label>
                     <div>
-                        <input type="password" name="contrasena" rows="1" cols="10"></input>
+                        <input type="password" name="contrasena" rows="1" cols="10" required/>
                     </div>
                     <br/>
                     <div class="form-group">
                         <label for="exampleInputFile">E-mail</label>
                         <div>
-                            <textarea name="email" rows="1" cols="10"></textarea>
+                            <input type="email" name="email" rows="1" cols="10" required>
                         </div>
                         <br/>
                         <div class="form-group">

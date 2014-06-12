@@ -35,3 +35,7 @@
         </div><!--maincontentinner-->
     </div><!--maincontent-->
 </div>
+<!-- no veo el fin del html y es escrito eso de abajo-->
+</body>
+
+</html>

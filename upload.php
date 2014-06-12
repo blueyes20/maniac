@@ -28,7 +28,7 @@ echo "Type: " . $_FILES["file"]["type"] . "<br>";
 echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
 echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br>";
 // Enter your path to upload file here
-if (file_exists('c:\xampp\htdocs\proyecto\2\maniac/newupload/' .
+if (file_exists('c:\xampp\htdocs\maniac/newupload/' .
 $_FILES["file"]["name"]))
 {
 echo "<div class='error'>"."(".$_FILES["file"]["name"].")".
@@ -37,9 +37,9 @@ echo "<div class='error'>"."(".$_FILES["file"]["name"].")".
 else
 {
 move_uploaded_file($_FILES["file"]["tmp_name"],
-'c:\xampp\htdocs\proyecto\2\maniac/newupload/' . $_FILES["file"]["name"]);
+'c:\xampp\htdocs\maniac/newupload/' . $_FILES["file"]["name"]);
 echo "<div class='sucess'>"."Stored in: " .
-'c:\xampp\htdocs\proyecto\2\maniac/newupload/' . $_FILES["file"]["name"]."</div>";
+'c:\xampp\htdocs\maniac/newupload/' . $_FILES["file"]["name"]."</div>";
 }
 }
 }

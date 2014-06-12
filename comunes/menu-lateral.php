@@ -41,11 +41,25 @@
                         menuMensaje ();
                     }
 
+                    if ($menuid['menuid']==6) {
+                        #calendario
+                        # Inicio Calendario -->
+                        echo '<li class="dropdown"><a href=""><span class="iconfa-calendar"></span> Calendario</a>
+                           <ul>
+                             <li><a href="index.php?&sec=calendario&view=calendario"> Ver Calendario</a></li> 
+                             <li><a href="index.php?&sec=calendario&view=finsertar"> Nueva Cita</a></li>
+                           </ul>
+                        </li>';
+               
+                       #Fin TCalendario -->
+                    }
+
                     
                 }
 
                     
                 ?>
+               
                 
 
                  <!-- Terminan los diferentes apartados-->
