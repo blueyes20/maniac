@@ -14,7 +14,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputFile">Fecha</label>
-                    <p>Introduce una fecha con el siguiente formato: <strong>M/D/AAAA</strong> (6/9/2014; esto sería -> 9/junio/2014)</p>
+                    <p>Introduce una fecha con el siguiente formato: <strong>M/D/AAAA</strong> (6/9/2014; esto sería -> junio/9/2014)</p>
                     <div>
                         <input name="evdate" rows="1" cols="10" required/>
                     </div>
