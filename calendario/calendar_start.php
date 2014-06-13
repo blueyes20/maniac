@@ -46,7 +46,11 @@ include ("connect.php");
 //
 for($i=1; $i<=$day_count; $i++){
 	//get events logic
-	$date = $showmonth.'/'.$i.'/'.$showyear;
+	if ($i <= 9) {
+		$date = '0'.$showmonth.'/0'.$i.'/'.$showyear;
+	} else {
+	$date = '0'.$showmonth.'/'.$i.'/'.$showyear;
+    }
 	$query = mysql_query('SELECT id FROM events WHERE evdate = "'.$date.'"');
 	$num_rows = mysql_num_rows($query);
 	if($num_rows > 0) {

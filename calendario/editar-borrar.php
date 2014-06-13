@@ -21,9 +21,10 @@
           
             <div class="form-group">
               <label for="exampleInputFile">Fecha</label>
-              <p>Introduce una fecha con el siguiente formato: <strong>M/D/AAAA</strong> (6/9/2014; esto sería -> junio/9/2014)</p>
+              <!-- <p>Introduce una fecha con el siguiente formato: <strong>M/D/AAAA</strong> (6/9/2014; esto sería -> junio/9/2014)</p> -->
               <div>
-                <textarea name="evdate" rows="1" cols="10"><?php echo $a['evdate'] ?></textarea>
+                <p><input type="text" name="evdate" id="datepicker" value="<?php echo $a['evdate'] ?>"></p>
+                <!-- <textarea name="evdate" rows="1" cols="10"><?php #echo $a['evdate'] ?></textarea> -->
               </div>
               <br/>
               
