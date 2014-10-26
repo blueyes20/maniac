@@ -16,7 +16,7 @@
 	$md5= md5($contrasena);
 	$sql= 'SELECT * FROM usuarios WHERE nombreusu="'.$usuario.'" AND contrasena ="'.$md5.'"';
 	$resultados= mysqli_num_rows (mysqli_query($con,$sql));
-	echo $resultados;
+	//echo $resultados;
 
 	$tu=mysqli_query($con,$sql);
 	$matriz=mysqli_fetch_array($tu);

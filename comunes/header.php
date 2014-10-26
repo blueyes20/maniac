@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once("dll/config.php");
 	require_once("dll/inyection_sql.php");
 	require_once("dll/functions.php");
@@ -8,7 +8,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
     
     <title>CASHUBA.COM - LISTA DE TAREAS</title>
     <meta name="title" content="Sorteos de revista insidenerja.com" /> 
